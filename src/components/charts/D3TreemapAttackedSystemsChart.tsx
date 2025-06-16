@@ -48,7 +48,7 @@ const D3TreemapAttackedSystemsChart: React.FC<D3TreemapAttackedSystemsChartProps
       .append("rect")
       .attr("width", (d) => (d as any).x1 - (d as any).x0)
       .attr("height", (d) => (d as any).y1 - (d as any).y0)
-      .attr("fill", (d, i) => d3.schemeCategory10[i % 10])
+      .attr("fill", (_d, i) => d3.schemeCategory10[i % 10])
       .attr("stroke", "#fff");
     node
       .append("text")
