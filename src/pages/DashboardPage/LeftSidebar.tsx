@@ -4,6 +4,7 @@ import EmailNotification from '@/components/EmailNotification';
 import WafStatusRealtime from '@/components/WafStatusRealtime';
 import SmartIPCards from '@/components/charts/SmartIPCards';
 import InterceptionRateChart from '@/components/charts/InterceptionRateChart';
+import DDoSMonitoringCharts from '@/components/charts/DDoSMonitoringCharts';
 
 interface LeftSidebarProps {
   overallStats: OverallStats | null;
@@ -57,6 +58,18 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInf
             ) : <p className="text-slate-500 text-xs">无IP源数据</p>}
         </div>
       )}
+
+      <div className="pt-2">
+        <div className="mb-3 pb-1 group relative">
+          <div className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00d9ff] to-transparent bottom-0"></div>
+          <h2 className="text-base font-medium relative flex items-center">
+            <span className="w-1 h-4 bg-[#00d9ff] mr-2 shadow-[0_0_8px_#00d9ff] rounded-sm"></span>
+            <span className="text-[#00d9ff] uppercase tracking-widest text-sm">抗DDoS监测</span>
+          </h2>
+        </div>
+        <DDoSMonitoringCharts />
+      </div>
+
       <div className="pt-2">
         <div className="mb-2 backdrop-blur-[2px] bg-[#11224080] px-2 py-1 border-b border-[#00d9ff]/40">
           <h3 className="text-xs font-medium text-[#00d9ff] uppercase tracking-wider">真实拦截率</h3>
