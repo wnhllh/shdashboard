@@ -56,7 +56,7 @@ const D3TreemapAttackedSystemsChart: React.FC<D3TreemapAttackedSystemsChartProps
       .attr("y", 20)
       .attr("font-size", 14)
       .attr("fill", "#fff")
-      .text((d) => `${d.data.name}: ${d.data.value}`); // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .text(() => "");
   }, [data, width, height]);
 
   return (
