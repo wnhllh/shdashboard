@@ -45,6 +45,7 @@ function useVerticalScroll(scrollRef: React.RefObject<HTMLDivElement>, itemCount
     let raf: number;
     let offset = 0;
     function animate() {
+      if (!el) return; // 防止 el 为 null
       offset += speed;
       if (offset >= itemCount * itemHeight) offset = 0;
       el.scrollTop = offset;
