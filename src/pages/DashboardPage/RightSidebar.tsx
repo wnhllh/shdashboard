@@ -93,8 +93,8 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
                       const stayEndPercent = startPercent + stayPercent;
                       const endPercent = (index + 1) * itemDuration;
                       
-                      const currentPosition = -index * 132;
-                      const nextPosition = -(index + 1) * 132;
+                      const currentPosition = -index * 120;
+                      const nextPosition = -(index + 1) * 120;
                       
                       return `
                         ${startPercent.toFixed(2)}% { transform: translateY(${currentPosition}px); }
@@ -102,7 +102,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
                         ${endPercent.toFixed(2)}% { transform: translateY(${nextPosition}px); }
                       `;
                     }).join('')}
-                    100% { transform: translateY(-${(dashboardData.securityAlerts?.length || 0) * 132}px); }
+                    100% { transform: translateY(-${(dashboardData.securityAlerts?.length || 0) * 120}px); }
                   }
                 `}
               </style>
@@ -116,7 +116,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
                 const contentPreview = getTextContent(alert.content).substring(0, 80) + '...';
                 
                 return (
-                  <div key={`original-${alert.id}`} className="flex flex-col py-2 px-3 bg-slate-800/60 rounded-lg mb-3" style={{height: '120px', minHeight: '120px'}}>
+                  <div key={`original-${alert.id}`} className="flex flex-col py-2 px-3 bg-slate-800/60 rounded-lg mb-3" style={{height: '108px', minHeight: '108px'}}>
                     <div className="flex items-start justify-between mb-1">
                       <div className="flex items-center gap-2">
                         <span className={`text-xxs font-medium px-2 py-0.5 rounded ${getCategoryStyle(alert.category)}`}>
@@ -146,7 +146,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
                 const contentPreview = getTextContent(alert.content).substring(0, 80) + '...';
                 
                 return (
-                  <div key={`repeat-${alert.id}`} className="flex flex-col py-2 px-3 bg-slate-800/60 rounded-lg mb-3" style={{height: '120px', minHeight: '120px'}}>
+                  <div key={`repeat-${alert.id}`} className="flex flex-col py-2 px-3 bg-slate-800/60 rounded-lg mb-3" style={{height: '108px', minHeight: '108px'}}>
                     <div className="flex items-start justify-between mb-1">
                       <div className="flex items-center gap-2">
                         <span className={`text-xxs font-medium px-2 py-0.5 rounded ${getCategoryStyle(alert.category)}`}>
