@@ -1,0 +1,203 @@
+{
+  "overallAttackData": [
+    {
+      "id": 1,
+      "timestamp": "2024-01-15T10:30:00Z",
+      "request_id": "fallback-001",
+      "period_type": "realtime",
+      "internet_total": 15420,
+      "internet_blocked": 12336,
+      "internet_arrived": 3084,
+      "internet_domestic": 8956,
+      "internet_abroad": 6464,
+      "intranet_total": 2145,
+      "intranet_blocked": 1716,
+      "intranet_arrived": 429,
+      "threat_level": 3,
+      "is_complete": true,
+      "start_time": "2024-01-15T10:00:00Z",
+      "end_time": "2024-01-15T10:30:00Z",
+      "attack_target_host_crack": 156,
+      "attack_target_terminal_attack": 89,
+      "attack_target_unknown_info": 45,
+      "attack_target_sensitive_leak": 23
+    }
+  ],
+  "attackSources": [
+    {
+      "id": 1,
+      "source_type": "domestic",
+      "name": "上海",
+      "value": 2145,
+      "rank": 1,
+      "attack_data_id": 1
+    },
+    {
+      "id": 2,
+      "source_type": "domestic",
+      "name": "北京",
+      "value": 1876,
+      "rank": 2,
+      "attack_data_id": 1
+    },
+    {
+      "id": 3,
+      "source_type": "domestic",
+      "name": "广州",
+      "value": 1456,
+      "rank": 3,
+      "attack_data_id": 1
+    },
+    {
+      "id": 4,
+      "source_type": "foreign",
+      "name": "美国",
+      "value": 3245,
+      "rank": 1,
+      "attack_data_id": 1
+    },
+    {
+      "id": 5,
+      "source_type": "foreign",
+      "name": "俄罗斯",
+      "value": 2156,
+      "rank": 2,
+      "attack_data_id": 1
+    }
+  ],
+  "attackTypes": [
+    {
+      "id": 1,
+      "name": "Web应用攻击",
+      "value": 4567,
+      "rank": 1,
+      "attack_data_id": 1
+    },
+    {
+      "id": 2,
+      "name": "恶意软件",
+      "value": 3421,
+      "rank": 2,
+      "attack_data_id": 1
+    },
+    {
+      "id": 3,
+      "name": "网络扫描",
+      "value": 2876,
+      "rank": 3,
+      "attack_data_id": 1
+    },
+    {
+      "id": 4,
+      "name": "DDoS攻击",
+      "value": 1965,
+      "rank": 4,
+      "attack_data_id": 1
+    },
+    {
+      "id": 5,
+      "name": "钓鱼攻击",
+      "value": 1234,
+      "rank": 5,
+      "attack_data_id": 1
+    }
+  ],
+  "realtimeAttacks": [
+    {
+      "id": 1,
+      "attack_time": "2024-01-15T10:29:45Z",
+      "source_ip": "192.168.1.100",
+      "source_location": {
+        "city": "上海",
+        "lat": 31.2304,
+        "lng": 121.4737
+      },
+      "dest_ip": "10.0.0.50",
+      "dest_location": {
+        "city": "上海",
+        "lat": 31.2304,
+        "lng": 121.4737
+      },
+      "attack_type": "Web应用攻击",
+      "status": "blocked",
+      "attack_data_id": 1
+    },
+    {
+      "id": 2,
+      "attack_time": "2024-01-15T10:29:32Z",
+      "source_ip": "203.45.67.89",
+      "source_location": {
+        "city": "Moscow",
+        "lat": 55.7558,
+        "lng": 37.6176
+      },
+      "dest_ip": "10.0.0.45",
+      "dest_location": {
+        "city": "上海",
+        "lat": 31.2304,
+        "lng": 121.4737
+      },
+      "attack_type": "恶意软件",
+      "status": "detected",
+      "attack_data_id": 1
+    }
+  ],
+  "securityAlerts": [
+    {
+      "id": 1,
+      "news_id": "alert-001",
+      "title": "发现新型恶意软件变种",
+      "content": "安全团队检测到一个新的恶意软件变种，建议立即更新防护策略。",
+      "category": "malware",
+      "publish_time": "2024-01-15T10:00:00Z",
+      "creator": "安全运营中心",
+      "hits": 156,
+      "attack_data_id": 1
+    },
+    {
+      "id": 2,
+      "news_id": "alert-002",
+      "title": "异常网络流量检测",
+      "content": "系统检测到来自境外的异常网络流量，请相关部门注意监控。",
+      "category": "network",
+      "publish_time": "2024-01-15T09:45:00Z",
+      "creator": "网络监控团队",
+      "hits": 89,
+      "attack_data_id": 1
+    }
+  ],
+  "historicalTrend": [
+    {
+      "date": "2024-01-08",
+      "value": 12500
+    },
+    {
+      "date": "2024-01-09",
+      "value": 13200
+    },
+    {
+      "date": "2024-01-10",
+      "value": 14100
+    },
+    {
+      "date": "2024-01-11",
+      "value": 13800
+    },
+    {
+      "date": "2024-01-12",
+      "value": 15200
+    },
+    {
+      "date": "2024-01-13",
+      "value": 16100
+    },
+    {
+      "date": "2024-01-14",
+      "value": 15800
+    },
+    {
+      "date": "2024-01-15",
+      "value": 17565
+    }
+  ]
+} 

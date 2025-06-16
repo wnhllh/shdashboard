@@ -1,0 +1,44 @@
+[
+  {
+    "id": 7,
+    "name": "HTTP_爬虫攻击",
+    "value": 1795,
+    "rank": 1,
+    "attack_data_id": 1
+  },
+  {
+    "id": 8,
+    "name": "自定义",
+    "value": 689,
+    "rank": 2,
+    "attack_data_id": 1
+  },
+  {
+    "id": 9,
+    "name": "HTTP_ZGRAB",
+    "value": 571,
+    "rank": 3,
+    "attack_data_id": 1
+  },
+  {
+    "id": 10,
+    "name": "HTTP_druid_actuator",
+    "value": 464,
+    "rank": 4,
+    "attack_data_id": 1
+  },
+  {
+    "id": 11,
+    "name": "HTTP_LOG4j",
+    "value": 423,
+    "rank": 5,
+    "attack_data_id": 1
+  },
+  {
+    "id": 12,
+    "name": "其他",
+    "value": 1063,
+    "rank": 6,
+    "attack_data_id": 1
+  }
+] 

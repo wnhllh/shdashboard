@@ -1,0 +1,82 @@
+[
+  {
+    "id": 11,
+    "source_type": "domestic",
+    "name": "上海",
+    "value": 8230,
+    "rank": 1,
+    "attack_data_id": 1
+  },
+  {
+    "id": 12,
+    "source_type": "domestic",
+    "name": "广东",
+    "value": 182,
+    "rank": 2,
+    "attack_data_id": 1
+  },
+  {
+    "id": 13,
+    "source_type": "domestic",
+    "name": "河北",
+    "value": 18,
+    "rank": 3,
+    "attack_data_id": 1
+  },
+  {
+    "id": 14,
+    "source_type": "domestic",
+    "name": "江苏",
+    "value": 4,
+    "rank": 4,
+    "attack_data_id": 1
+  },
+  {
+    "id": 15,
+    "source_type": "domestic",
+    "name": "福建",
+    "value": 2,
+    "rank": 5,
+    "attack_data_id": 1
+  },
+  {
+    "id": 16,
+    "source_type": "foreign",
+    "name": "美国",
+    "value": 99,
+    "rank": 1,
+    "attack_data_id": 1
+  },
+  {
+    "id": 17,
+    "source_type": "foreign",
+    "name": "新加坡",
+    "value": 22,
+    "rank": 2,
+    "attack_data_id": 1
+  },
+  {
+    "id": 18,
+    "source_type": "foreign",
+    "name": "澳大利亚",
+    "value": 16,
+    "rank": 3,
+    "attack_data_id": 1
+  },
+  {
+    "id": 19,
+    "source_type": "foreign",
+    "name": "爱尔兰",
+    "value": 14,
+    "rank": 4,
+    "attack_data_id": 1
+  },
+  {
+    "id": 20,
+    "source_type": "foreign",
+    "name": "加拿大",
+    "value": 13,
+    "rank": 5,
+    "attack_data_id": 1
+  }
+] 

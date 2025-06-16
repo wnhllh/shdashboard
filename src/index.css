@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0a192f; /* 深蓝色背景 */
+  color: #e6f1ff; /* 浅色文字 */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* 针对超宽屏优化的基本样式 */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* 防止滚动条 */
+} 
+
+@keyframes अनंत-ऊर्ध्वाधर-स्क्रॉल {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%); /* 假设内容复制了一次 */
+  }
+}
+
+.security-alerts-container ul {
+  /* 如果内容不够长，可能需要JS复制内容或调整动画 */
+  animation: अनंत-ऊर्ध्वाधर-स्क्रॉल 20s linear infinite;
+  /* 尝试增加动画时长让滚动变慢 */
+}
+
+/* 鼠标悬停时暂停动画 - 可选 */
+.security-alerts-container:hover ul {
+  animation-play-state: paused;
+} 
