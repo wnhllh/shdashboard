@@ -43,11 +43,11 @@ const D3TreemapAttackedSystemsChart: React.FC<D3TreemapAttackedSystemsChartProps
       .data(root.leaves())
       .enter()
       .append("g")
-      .attr("transform", (d) => `translate(${d.x0},${d.y0})`);
+      .attr("transform", (d) => `translate(${(d as any).x0},${(d as any).y0})`);
     node
       .append("rect")
-      .attr("width", (d) => d.x1 - d.x0)
-      .attr("height", (d) => d.y1 - d.y0)
+      .attr("width", (d) => (d as any).x1 - (d as any).x0)
+      .attr("height", (d) => (d as any).y1 - (d as any).y0)
       .attr("fill", (d, i) => d3.schemeCategory10[i % 10])
       .attr("stroke", "#fff");
     node

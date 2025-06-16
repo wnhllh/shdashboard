@@ -50,7 +50,7 @@ export const getAttackTypes = (): Promise<AttackType[]> =>
 export const getSecurityAlerts = (): Promise<SecurityAlert[]> =>
   fetchMockData<SecurityAlert[]>('s6000_security_alert.json');
 
-export const getHighRiskEvents = (limit: number = 10): Promise<any[]> => 
+export const getHighRiskEvents = (_limit: number = 10): Promise<any[]> => 
   Promise.resolve([]);
 
 // Mock implementation for historical trend
@@ -73,7 +73,7 @@ function generateMockRealtimeAttacks(total: number = 300): RealtimeAttack[] {
   console.log('生成模拟攻击数据', total);
   const attacks: RealtimeAttack[] = [];
   // 目标坐标——始终指向上海
-  const shanghaiLocation = { city: '上海', lat: 31.2304, lng: 121.4737 } as const;
+  const shanghaiLocation = { city: '旧金山', lat: 37.7749, lng: -122.4194, country: '美国' } as any;
 
   // 定义几个攻击源聚集区域
   const clusters = [

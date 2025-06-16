@@ -80,8 +80,7 @@ const D3HorizontalBarChart: React.FC<D3HorizontalBarChartProps> = ({
       .attr('width', '140%')
       .attr('height', '140%');
       
-    // 增加扭曲和位移
-    const neonTurbulence = neonFilter.append('feTurbulence')
+    neonFilter.append('feTurbulence')
       .attr('type', 'fractalNoise')
       .attr('baseFrequency', '1')
       .attr('numOctaves', '1')

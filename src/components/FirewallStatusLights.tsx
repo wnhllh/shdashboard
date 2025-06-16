@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 // 防火墙状态类型
 type FirewallStatus = 'green' | 'red' | 'yellow';
@@ -12,31 +12,10 @@ interface Firewall {
 
 interface FirewallStatusLightsProps {
   firewalls: Firewall[];
-  height?: number;
 }
 
 // 灯光颜色和阴影
-const statusStyles = {
-  green: {
-    bg: 'bg-green-500',
-    glow: 'shadow-[0_0_12px_2px_rgba(34,197,94,0.7)]',
-    border: 'border-green-400',
-    ring: 'ring-green-400/40',
-  },
-  red: {
-    bg: 'bg-red-500',
-    glow: 'shadow-[0_0_16px_3px_rgba(239,68,68,0.9)]',
-    border: 'border-red-400',
-    ring: 'ring-red-400/40',
-  },
-  yellow: {
-    bg: 'bg-yellow-400',
-    glow: 'shadow-[0_0_12px_2px_rgba(250,204,21,0.6)]',
-    border: 'border-yellow-300',
-    ring: 'ring-yellow-300/40',
-  },
-};
-
+// const statusStyles = { ... }   // 已删除未使用的 statusStyles
 // 纵向自动滚动hook（仅绿灯区）
 function useVerticalScroll(scrollRef: React.RefObject<HTMLDivElement>, itemCount: number, itemHeight: number, speed = 1) {
   useEffect(() => {
@@ -57,7 +36,7 @@ function useVerticalScroll(scrollRef: React.RefObject<HTMLDivElement>, itemCount
 }
 
 
-const FirewallStatusLights: React.FC<FirewallStatusLightsProps> = ({ firewalls, height = 200 }) => {
+const FirewallStatusLights: React.FC<FirewallStatusLightsProps> = ({ firewalls }) => {
   // 红灯置顶，绿灯滚动
   const reds = firewalls.filter(f => f.status === 'red' || f.status === 'yellow');
   const greens = firewalls.filter(f => f.status === 'green');

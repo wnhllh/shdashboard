@@ -38,36 +38,38 @@ const TopAttackSourcesChart: React.FC<TopAttackSourcesChartProps> = ({ domesticD
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-around"> {/* Changed to justify-around for better spacing if container is tall */}
-      <div>
-        <h4 className="text-xs font-semibold text-cyan-400 mb-1 text-center">国内 Top 5 攻击源</h4>
-        <ResponsiveContainer width="100%" height={Math.max(domesticData.length * 22 + 40, 100)}> {/* Adjusted item height and base */}
-          <BarChart data={domesticData} layout="vertical" margin={{ top: 5, right: 30, left: 5, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" strokeOpacity={0.2} />
-            <XAxis {...commonXAxisProps} />
-            <YAxis dataKey="source" {...commonYAxisProps} />
-            <Tooltip {...commonTooltipProps} />
-            <Bar dataKey="count" fill="#22d3ee" {...commonBarProps}>
-               <LabelList dataKey="count" position="right" style={{ fill: 'white', fontSize: 10 }} />
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
+    <React.Fragment>
+      <div className="w-full h-full flex flex-col justify-around"> {/* Changed to justify-around for better spacing if container is tall */}
+        <div>
+          <h4 className="text-xs font-semibold text-cyan-400 mb-1 text-center">国内 Top 5 攻击源</h4>
+          <ResponsiveContainer width="100%" height={Math.max(domesticData.length * 22 + 40, 100)}> {/* Adjusted item height and base */}
+            <BarChart data={domesticData} layout="vertical" margin={{ top: 5, right: 30, left: 5, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" strokeOpacity={0.2} />
+              <XAxis {...commonXAxisProps} />
+              <YAxis dataKey="source" {...commonYAxisProps} />
+              <Tooltip {...commonTooltipProps} />
+              <Bar dataKey="count" fill="#22d3ee" {...commonBarProps}>
+                 <LabelList dataKey="count" position="right" style={{ fill: 'white', fontSize: 10 }} />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="mt-1"> {/* Reduced margin-top */} 
+          <h4 className="text-xs font-semibold text-amber-400 mb-1 text-center">国外 Top 5 攻击源</h4>
+          <ResponsiveContainer width="100%" height={Math.max(foreignData.length * 22 + 40, 100)}> {/* Adjusted item height and base */}
+            <BarChart data={foreignData} layout="vertical" margin={{ top: 5, right: 30, left: 5, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" strokeOpacity={0.2} />
+              <XAxis {...commonXAxisProps} />
+              <YAxis dataKey="source" {...commonYAxisProps} />
+              <Tooltip {...commonTooltipProps} />
+              <Bar dataKey="count" fill="#facc15" {...commonBarProps}>
+                <LabelList dataKey="count" position="right" style={{ fill: 'white', fontSize: 10 }} />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
-      <div className="mt-1"> {/* Reduced margin-top */} 
-        <h4 className="text-xs font-semibold text-amber-400 mb-1 text-center">国外 Top 5 攻击源</h4>
-        <ResponsiveContainer width="100%" height={Math.max(foreignData.length * 22 + 40, 100)}> {/* Adjusted item height and base */}
-          <BarChart data={foreignData} layout="vertical" margin={{ top: 5, right: 30, left: 5, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" strokeOpacity={0.2} />
-            <XAxis {...commonXAxisProps} />
-            <YAxis dataKey="source" {...commonYAxisProps} />
-            <Tooltip {...commonTooltipProps} />
-            <Bar dataKey="count" fill="#facc15" {...commonBarProps}>
-              <LabelList dataKey="count" position="right" style={{ fill: 'white', fontSize: 10 }} />
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
+    </React.Fragment>
   );
 };
 

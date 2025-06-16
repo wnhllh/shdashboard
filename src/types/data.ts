@@ -46,9 +46,9 @@ export interface RealtimeAttack {
   id: number;
   attack_time: string; // datetime(6)
   source_ip: string;
-  source_location: string | { city: string; lat: number; lng: number }; // For globe visualization
+  source_location: string | { city: string; country?: string; lat: number; lng: number }; // For globe visualization
   dest_ip: string;
-  dest_location?: { city: string; lat: number; lng: number }; // Shanghai
+  dest_location?: { city: string; country?: string; lat: number; lng: number }; // Shanghai
   attack_type: string;
   status: string; // e.g., 'blocked', 'detected'
   attack_data_id: number; // FK

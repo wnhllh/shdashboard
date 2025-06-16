@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import CyberGlobe from '@/components/CyberGlobe';
 import type { AttackHotspot } from '@/types/data';
 

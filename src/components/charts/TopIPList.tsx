@@ -4,7 +4,6 @@ interface TopIPListProps {
   data: { name: string; value: number }[];
   max?: number;
   baseColor?: string;
-  idSuffix?: string;
 }
 
 const gradientColors = [
