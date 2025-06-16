@@ -1,6 +1,6 @@
 import React from 'react';
-import type { OverallStats, AttackSourceInfo, Firewall } from '@/types/data';
-import FirewallStatusLights from '@/components/FirewallStatusLights';
+import type { OverallStats, AttackSourceInfo } from '@/types/data';
+import EmailNotification from '@/components/EmailNotification';
 import WafStatusRealtime from '@/components/WafStatusRealtime';
 import SmartIPCards from '@/components/charts/SmartIPCards';
 import InterceptionRateChart from '@/components/charts/InterceptionRateChart';
@@ -8,18 +8,14 @@ import InterceptionRateChart from '@/components/charts/InterceptionRateChart';
 interface LeftSidebarProps {
   overallStats: OverallStats | null;
   attackSourceInfo: AttackSourceInfo | null;
-  firewalls: Firewall[];
 }
 
-const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInfo, firewalls }) => {
+const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInfo }) => {
   const techBlueMain = '#00d9ff';
 
   return (
     <section className="basis-1/5 bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue overflow-y-auto flex flex-col space-y-3 shrink-0">
-      <FirewallStatusLights
-        firewalls={firewalls}
-
-      />
+      <EmailNotification />
       <WafStatusRealtime />
       <div>
         <div className="mb-3 pb-1 group relative">
