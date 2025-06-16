@@ -18,7 +18,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInf
     <section className="basis-1/5 bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue overflow-y-auto flex flex-col space-y-3 shrink-0">
       <FirewallStatusLights
         firewalls={firewalls}
-        height={340}
+
       />
       <WafStatusRealtime />
       <div>

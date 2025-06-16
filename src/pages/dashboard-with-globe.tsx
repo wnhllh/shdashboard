@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CyberGlobe from '@/components/CyberGlobe';
 import type { AttackHotspot } from '@/types/data';
 
@@ -32,7 +32,7 @@ const DashboardWithGlobe = () => {
   }, []);
 
   // 将攻击数据转换为飞线数据
-  const arcsData = attackData.map(attack => ({
+  const arcsData = attackData.map((attack: any, index: any) => ({
     startLat: attack.lat,
     startLng: attack.lng,
     endLat: 31.2304, // 上海
@@ -42,7 +42,7 @@ const DashboardWithGlobe = () => {
   }));
 
   // 将攻击数据转换为热点数据
-  const pointsData: AttackHotspot[] = attackData.map(attack => ({
+  const pointsData: AttackHotspot[] = attackData.map((attack: any) => ({
     lat: attack.lat,
     lng: attack.lng,
     country: attack.country,

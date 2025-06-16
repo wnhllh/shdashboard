@@ -14,7 +14,7 @@ const gradientColors = [
   'from-[#f472b6] to-[#fcd34d]', // top5
 ];
 
-const TopIPList: React.FC<TopIPListProps> = ({ data, max, baseColor = '#00d9ff', idSuffix = 'topip' }) => {
+const TopIPList: React.FC<TopIPListProps> = ({ data, max, baseColor = '#00d9ff' }) => {
   const maxValue = max || (data.length > 0 ? Math.max(...data.map(d => d.value)) : 1);
   return (
     <div className="flex flex-col gap-2">
