@@ -1,3 +1,9 @@
+declare global {
+  interface Window {
+    allApiResponses: Record<string, any>;
+  }
+}
+
 import { 
   AttackData,
   AttackSource,
@@ -48,7 +54,13 @@ async function apiFetch<T>(endpoint: string, params: Record<string, any> = {}, o
       resultKeys: Object.keys(result),
       dataLength: Array.isArray(result) ? result.length : (result.data && Array.isArray(result.data) ? result.data.length : 'N/A')
     });
-    
+
+    // === 自动收集所有API真实返回数据 ===
+    if (typeof window !== 'undefined') {
+      window.allApiResponses = window.allApiResponses || {};
+      window.allApiResponses[url.toString()] = result;
+    }
+    // === END ===
     // Some backend endpoints wrap list data in a 'data' property.
     return isDataEnveloped ? result.data : result;
   } catch (error) {
@@ -63,6 +75,16 @@ async function apiFetch<T>(endpoint: string, params: Record<string, any> = {}, o
 
 // --- API Service Functions ---
 // Each function corresponds to a backend endpoint.
+
+/**
+ * 获取主机安全事件
+ * @param limit 事件数量限制
+ * @returns 主机安全事件列表
+ */
+export async function getHostSecurityEvents(limit: number = 10): Promise<any[]> {
+  return apiFetch<any[]>('/host-security-events/', { limit });
+}
+
 
 export const getS6000VisualizationData = (periodType: string = 'realtime'): Promise<AttackData | null> => 
   apiFetch<AttackData | null>(`/data/`, { period_type: periodType }, { isDataEnveloped: false });

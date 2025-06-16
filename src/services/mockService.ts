@@ -50,8 +50,34 @@ export const getAttackTypes = (): Promise<AttackType[]> =>
 export const getSecurityAlerts = (): Promise<SecurityAlert[]> =>
   fetchMockData<SecurityAlert[]>('s6000_security_alert.json');
 
-export const getHighRiskEvents = (_limit: number = 10): Promise<any[]> => 
-  Promise.resolve([]);
+// 高危攻击事件 mock，直接读取 fallback-data.json 里高危接口的内容
+export const getHighRiskEvents = async (_limit: number = 10): Promise<any[]> => {
+  try {
+    const response = await fetch('/src/data/fallback-data.json?_=' + new Date().getTime());
+    const data = await response.json();
+    // 适配 fallback-data.json 里的高危事件接口结构
+    const events = data["http://127.0.0.1:8000/dashboard/yjpt/high_risk/?limit=10"]?.data || [];
+    // limit 截断
+    return events.slice(0, _limit);
+  } catch (e) {
+    console.error('mock getHighRiskEvents error', e);
+    return [];
+  }
+};
+
+// 主机安全事件 mock（如有类似接口，可仿照上面写法实现）
+export const getHostSecurityEvents = async (_limit: number = 10): Promise<any[]> => {
+  try {
+    const response = await fetch('/src/data/fallback-data.json?_=' + new Date().getTime());
+    const data = await response.json();
+    // 这里假设有类似 host_security_events 字段或接口
+    const events = data["http://127.0.0.1:8000/dashboard/host_security_events/?limit=10"]?.data || [];
+    return events.slice(0, _limit);
+  } catch (e) {
+    console.error('mock getHostSecurityEvents error', e);
+    return [];
+  }
+};
 
 // Mock implementation for historical trend
 export const getHistoricalTrend = async (days: number = 7): Promise<HistoricalTrend[]> => {

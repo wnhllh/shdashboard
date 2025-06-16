@@ -94,6 +94,8 @@ export interface DashboardData {
   realtimeAttacks: RealtimeAttack[];
   securityAlerts: SecurityAlert[];
   historicalTrend?: HistoricalTrend[];
+  highRiskEvents?: HighRiskEvent[];
+  hostSecurityEvents?: any[];
 }
 
 // Specific data points from user request

@@ -505,7 +505,19 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
         }
       });
 
-      const borderMaterial = new THREE.LineBasicMaterial({ color: 0x1144aa, linewidth: 1 }); 
+      const borderMaterial = new THREE.LineBasicMaterial({ 
+        color: 0x6644ff,  // 深蓝紫色，更有科幻感
+        transparent: true,
+        opacity: 0.85,    // 稍微降低透明度，增强存在感
+        linewidth: 1 
+      });
+
+      const borderGlowMaterial = new THREE.LineBasicMaterial({ 
+        color: 0x00ffaa,  // 青绿色发光，科幻感强烈
+        transparent: true,
+        opacity: 0.6,     // 增强发光效果
+        linewidth: 1 
+      });
 
       geoJsonData.features.forEach((feature: any) => {
         const { geometry } = feature;
@@ -513,13 +525,23 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
 
         const processCoordinates = (coordsArray: any[]) => {
           const points: THREE.Vector3[] = [];
+          const glowPoints: THREE.Vector3[] = [];
+          
           coordsArray.forEach(([lng, lat]: [number, number]) => {
-            points.push(latLngToVector3(lat, lng, GLOBE_RADIUS, 0.2)); 
+            points.push(latLngToVector3(lat, lng, GLOBE_RADIUS, 1.0)); // 增加高度偏移到1.0，使线条更突出
+            glowPoints.push(latLngToVector3(lat, lng, GLOBE_RADIUS, 0.8)); // 稍微低一点的发光层
           });
+          
           if (points.length > 1) {
+            // 创建主线条（更亮更清晰）
             const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
             const line = new THREE.Line(lineGeometry, borderMaterial.clone()); 
             countryBordersGroupRef.current.add(line);
+
+            // 创建发光外层
+            const glowGeometry = new THREE.BufferGeometry().setFromPoints(glowPoints);
+            const glowLine = new THREE.Line(glowGeometry, borderGlowMaterial.clone());
+            countryBordersGroupRef.current.add(glowLine);
           }
         };
 

@@ -1,203 +1,336 @@
 {
-  "overallAttackData": [
-    {
-      "id": 1,
-      "timestamp": "2024-01-15T10:30:00Z",
-      "request_id": "fallback-001",
-      "period_type": "realtime",
-      "internet_total": 15420,
-      "internet_blocked": 12336,
-      "internet_arrived": 3084,
-      "internet_domestic": 8956,
-      "internet_abroad": 6464,
-      "intranet_total": 2145,
-      "intranet_blocked": 1716,
-      "intranet_arrived": 429,
-      "threat_level": 3,
-      "is_complete": true,
-      "start_time": "2024-01-15T10:00:00Z",
-      "end_time": "2024-01-15T10:30:00Z",
-      "attack_target_host_crack": 156,
-      "attack_target_terminal_attack": 89,
-      "attack_target_unknown_info": 45,
-      "attack_target_sensitive_leak": 23
-    }
-  ],
-  "attackSources": [
-    {
-      "id": 1,
-      "source_type": "domestic",
-      "name": "上海",
-      "value": 2145,
-      "rank": 1,
-      "attack_data_id": 1
-    },
-    {
-      "id": 2,
-      "source_type": "domestic",
-      "name": "北京",
-      "value": 1876,
-      "rank": 2,
-      "attack_data_id": 1
-    },
-    {
-      "id": 3,
-      "source_type": "domestic",
-      "name": "广州",
-      "value": 1456,
-      "rank": 3,
-      "attack_data_id": 1
-    },
-    {
-      "id": 4,
-      "source_type": "foreign",
-      "name": "美国",
-      "value": 3245,
-      "rank": 1,
-      "attack_data_id": 1
-    },
-    {
-      "id": 5,
-      "source_type": "foreign",
-      "name": "俄罗斯",
-      "value": 2156,
-      "rank": 2,
-      "attack_data_id": 1
-    }
-  ],
-  "attackTypes": [
-    {
-      "id": 1,
-      "name": "Web应用攻击",
-      "value": 4567,
-      "rank": 1,
-      "attack_data_id": 1
-    },
-    {
-      "id": 2,
-      "name": "恶意软件",
-      "value": 3421,
-      "rank": 2,
-      "attack_data_id": 1
-    },
-    {
-      "id": 3,
-      "name": "网络扫描",
-      "value": 2876,
-      "rank": 3,
-      "attack_data_id": 1
-    },
-    {
-      "id": 4,
-      "name": "DDoS攻击",
-      "value": 1965,
-      "rank": 4,
-      "attack_data_id": 1
-    },
-    {
-      "id": 5,
-      "name": "钓鱼攻击",
-      "value": 1234,
-      "rank": 5,
-      "attack_data_id": 1
-    }
-  ],
-  "realtimeAttacks": [
-    {
-      "id": 1,
-      "attack_time": "2024-01-15T10:29:45Z",
-      "source_ip": "192.168.1.100",
-      "source_location": {
-        "city": "上海",
-        "lat": 31.2304,
-        "lng": 121.4737
+  "http://127.0.0.1:8000/dashboard/sources/?limit=5": {
+    "data": [
+      {
+        "source_type": "domestic",
+        "name": "上海",
+        "value": 4559,
+        "rank": 1
       },
-      "dest_ip": "10.0.0.50",
-      "dest_location": {
-        "city": "上海",
-        "lat": 31.2304,
-        "lng": 121.4737
+      {
+        "source_type": "domestic",
+        "name": "北京",
+        "value": 52,
+        "rank": 2
       },
-      "attack_type": "Web应用攻击",
-      "status": "blocked",
-      "attack_data_id": 1
-    },
-    {
-      "id": 2,
-      "attack_time": "2024-01-15T10:29:32Z",
-      "source_ip": "203.45.67.89",
-      "source_location": {
-        "city": "Moscow",
-        "lat": 55.7558,
-        "lng": 37.6176
+      {
+        "source_type": "foreign",
+        "name": "美国",
+        "value": 30,
+        "rank": 1
       },
-      "dest_ip": "10.0.0.45",
-      "dest_location": {
-        "city": "上海",
-        "lat": 31.2304,
-        "lng": 121.4737
+      {
+        "source_type": "domestic",
+        "name": "河北",
+        "value": 27,
+        "rank": 3
       },
-      "attack_type": "恶意软件",
-      "status": "detected",
-      "attack_data_id": 1
-    }
-  ],
-  "securityAlerts": [
-    {
-      "id": 1,
-      "news_id": "alert-001",
-      "title": "发现新型恶意软件变种",
-      "content": "安全团队检测到一个新的恶意软件变种，建议立即更新防护策略。",
-      "category": "malware",
-      "publish_time": "2024-01-15T10:00:00Z",
-      "creator": "安全运营中心",
-      "hits": 156,
-      "attack_data_id": 1
-    },
-    {
-      "id": 2,
-      "news_id": "alert-002",
-      "title": "异常网络流量检测",
-      "content": "系统检测到来自境外的异常网络流量，请相关部门注意监控。",
-      "category": "network",
-      "publish_time": "2024-01-15T09:45:00Z",
-      "creator": "网络监控团队",
-      "hits": 89,
-      "attack_data_id": 1
-    }
-  ],
-  "historicalTrend": [
-    {
-      "date": "2024-01-08",
-      "value": 12500
-    },
-    {
-      "date": "2024-01-09",
-      "value": 13200
-    },
-    {
-      "date": "2024-01-10",
-      "value": 14100
-    },
-    {
-      "date": "2024-01-11",
-      "value": 13800
-    },
-    {
-      "date": "2024-01-12",
-      "value": 15200
-    },
-    {
-      "date": "2024-01-13",
-      "value": 16100
-    },
-    {
-      "date": "2024-01-14",
-      "value": 15800
-    },
-    {
-      "date": "2024-01-15",
-      "value": 17565
-    }
-  ]
-} 
+      {
+        "source_type": "foreign",
+        "name": "加拿大",
+        "value": 9,
+        "rank": 2
+      }
+    ]
+  },
+  "http://127.0.0.1:8000/dashboard/s6000/attack_types/": {
+    "data": [
+      {
+        "name": "HTTP_爬虫攻击",
+        "value": 2011,
+        "rank": 1
+      },
+      {
+        "name": "其他",
+        "value": 921,
+        "rank": 6
+      },
+      {
+        "name": "HTTP_ZGRAB",
+        "value": 659,
+        "rank": 2
+      },
+      {
+        "name": "HTTP_druid_actuator",
+        "value": 481,
+        "rank": 3
+      },
+      {
+        "name": "HTTP_LOG4j",
+        "value": 451,
+        "rank": 4
+      }
+    ]
+  },
+  "http://127.0.0.1:8000/dashboard/trend/?days=7": {
+    "data": []
+  },
+  "http://127.0.0.1:8000/dashboard/s6000/security_alerts/?limit=10": {
+    "data": [
+      {
+        "id": 15,
+        "news_id": "TG-20250528-005",
+        "title": "关于AI绘图工具ComfyUI历史漏洞的预警通告",
+        "content": "<p>据北京市网络与信息安全信息通报中心消息，AI绘图工具ComfyUI存在任意文件读取、远程代码执行等多个历史高危漏洞（CVE-2024-10099、CVE-2024-21574、CVE-2024-21575、CVE-2024-21576、CVE-2024-21577），攻击者可利用上述漏洞实施远程代码执行攻击，获取服务器权限，进而窃取系统数据。目前已有境外黑客组织利用ComfyUI漏洞对我网络资产实施网络攻击，伺机窃取重要敏感数据。</p><p>请各单位及时排查该工具使用情况，若有安装情况、攻击线索及时通过S6000或总指挥部电话上报，并下载升级官方补丁堵塞漏洞。</p>",
+        "category": "漏洞公告",
+        "publish_time": "2025-05-28T17:14:33",
+        "creator": "网络安全分析监控中心",
+        "hits": 209
+      },
+      {
+        "id": 16,
+        "news_id": "TG-20250528-004",
+        "title": "关于防范63款违法违规移动应用的预警通告",
+        "content": "<p>近期，经国家计算机病毒应急处理中心检测，63款移动应用存在违法违规收集使用个人信息情况，请各单位对照开展排查，及时删除违法违规软件，如发现信息泄露事件第一时间上报。涉及63款移动应用如下：<br/>1、在App首次运行时未通过弹窗等明显方式提示用户阅读隐私政策等收集使用规则；个人信息处理者在处理个人信息前，未以显著方式、清晰易懂的语言真实、准确、完整地向个人告知个人信息处理者的名称或者姓名、联系方式、个人信息的保存期限等。涉及6款移动应用如下：<br/>《一键登录SDK》（版本2.0.6，官网）、《厦门银行企业银行》（版本8.0.0，vivo应用商店）、《云挂卡》（版本1.1.6，华为应用市场）、《极验身份验-一键登录号码认证SDK》（版本2.9.6，官网）、《推手管家》（版本5.4.4，苹果应用商店）、《神蓍广告安卓SDK》（版本6.5.1.8，官网）。<br/>2、隐私政策未逐一列出App（包括委托的第三方或嵌入的第三方代码、插件）收集使用个人信息的目的、方式、范围等。涉及26款移动应用如下：<br/>《金茂荟》（版本3.2.7，小米应用商店）、《爱弹奏钢琴智能陪练》（版本5.6.7，应用宝）、《厦门银行企业银行》（版本8.0.0，vivo应用商店）、《享停车》（版本3.1.1，小米应用商店）、《海豚药药极速版》（版本1.3.0，360应用商店）、《千千音乐》（版本8.3.1.7，应用宝）、《明源云客移动销售》（版本1.8.5，应用宝）、《想家社区》（版本6.2.4，vivo应用商店）、《小学语文数学英语同步课堂》（版本7.0.0，应用宝）、《宜搜小说》（版本5.8.9，百度手机助手）、《抖推猫任务台》（版本3.2.11，蒲公英）、《号令天下》（版本3.2.8，多多软件站）、《优人脉》（版本14.1，联想应用商店）、《拍照识文字》（版本4.4.9，百度手机助手）、《咪咕快游》（版本1.0.0.4，腾势D9车机）、《南昌大学二附院医护端》（版本1.5.3，华为应用市场）、《天骄通》（版本2.37，OPPO&nbsp;软件商店）、《盛京通》（版本4.0.0，联想应用商店）、《蒙马充电》（版本1.0.4，联想应用商店）、《一句话识别AndroidSDK》（版本2.1.2，官网）、《晋停车》（版本2.0.7，火鸟手游网）、《推手管家》（版本5.4.4，苹果应用商店）、《保利悠悦荟》（版本3.0.9，vivo应用商店）、《豆豆钱》（版本7.9.19，当下软件园）、《喜马拉雅》（版本6.1.1.01，腾势D9车机）、《Suyi&nbsp;聚合广告&nbsp;SDK》（版本3.9.11.12264，官网）。<br/>3、个人信息处理者向其他个人信息处理者提供其处理的个人信息的，未向个人告知接收方的名称或者姓名、联系方式、处理目的、处理方式和个人信息的种类，并取得个人的单独同意。涉及14款移动应用如下：<br/>《转转》（版本11.11.7，PP助手）、《厦门银行企业银行》（版本8.0.0，vivo应用商店）、《掌通家园》（版本7.6.1，360手机助手）、《海豚药药极速版》（版本1.3.0，360应用商店）、《明源云客移动销售》（版本1.8.5，应用宝）、《小学语文数学英语同步课堂》（版本7.0.0，应用宝）、《云挂卡》（版本1.1.6，华为应用市场）、《耶鲁专升本》（版本6.0.6.8，360手机助手）、《0.1折手游-Android游戏SDK》（版本1.1.0，官网）、《咪咕快游》（版本1.0.0.4，腾势D9车机）、《南昌大学二附院医护端》（版本1.5.3，华为应用市场）、《天骄通》（版本2.37，OPPO&nbsp;软件商店）、《神蓍广告安卓SDK》（版本6.5.1.8，官网）、《创高体育》（版本2.9.8，华为应用商店）。<br/>4、未提供有效的更正、删除个人信息及注销用户账号功能；虽提供了更正、删除个人信息及注销用户账号功能，但未及时响应用户相应操作，需人工处理的，未在承诺时限内完成核查和处理。涉及5款移动应用如下：<br/>《一键登录SDK》（版本2.0.6，官网）、《驰声语音评测SDK》（版本2.3.5-3.0.2，官网）、《蒙马充电》（版本1.0.4，联想应用商店）、《神蓍广告安卓SDK》（版本6.5.1.8，官网）、《Suyi&nbsp;聚合广告&nbsp;SDK》（版本3.9.11.12264，官网）。<br/>5、投诉、举报未在承诺时限内受理并处理；个人信息处理者未建立便捷的个人行使权利的申请受理和处理机制。涉及8款移动应用如下：<br/>《一键登录SDK》（版本2.0.6，官网）、《抖推猫任务台》（版本3.2.11，蒲公英）、《驰声语音评测SDK》（版本2.3.5-3.0.2，官网）、《南昌大学二附院医护端》（版本1.5.3，华为应用市场）、《蒙马充电》（版本1.0.4，联想应用商店）、《推手管家》（版本5.4.4，苹果应用商店）、《神蓍广告安卓SDK》（版本6.5.1.8，官网）、《Suyi&nbsp;聚合广告&nbsp;SDK》（版本3.9.11.12264，官网）。<br/>6、未向用户提供撤回同意收集个人信息的途径、方式；个人信息处理者未提供便捷的撤回同意的方式。涉及34款移动应用如下：<br/>《爱弹奏钢琴智能陪练》（版本5.6.7，应用宝）、《龙湖U享家》（版本6.0.15，应用宝）、《好大夫在线》（版本8.9.2，豌豆荚）、《转转》（版本11.11.7，PP助手）、《厦门银行企业银行》（版本8.0.0，vivo应用商店）、《享停车》（版本3.1.1，小米应用商店）、《掌通家园》（版本7.6.1，360手机助手）、《千千音乐》（版本8.3.1.7，应用宝）、《想家社区》（版本6.2.4，vivo应用商店）、《小学语文数学英语同步课堂》（版本7.0.0，应用宝）、《住这儿》（版本5.7.7，联想应用商店）、《驴妈妈旅游》（版本1.0.0，vivo应用商店）、《小豆苗》（版本8.0.0，豌豆荚）、《极序》（版本2.0.9，联想应用商店）、《青云诀2》（版本2.2.4，豌豆荚）、《抖推猫任务台》（版本3.2.11，蒲公英）、《耶鲁专升本》（版本6.0.6.8，360手机助手）、《号令天下》（版本3.2.8，多多软件站）、《早安心语》（版本1.6.9，OPPO软件商店）、《优人脉》（版本14.1，联想应用商店）、《拍照识文字》（版本4.4.9，百度手机助手）、《驰声语音评测SDK》（版本2.3.5-3.0.2，官网）、《咪咕快游》（版本1.0.0.4，腾势D9车机）、《南昌大学二附院医护端》（版本1.5.3，华为应用市场）、《天骄通》（版本2.37，OPPO&nbsp;软件商店）、《盛京通》（版本4.0.0，联想应用商店）、《蒙马充电》（版本1.0.4，联想应用商店）、《晋停车》（版本2.0.7，火鸟手游网）、《推手管家》（版本5.4.4，苹果应用商店）、《维信卡卡贷》（版本6.3.8，应用宝）、《保利悠悦荟》（版本3.0.9，vivo应用商店）、《无尽冬日》（版本1.7.12，豌豆荚）、《喜马拉雅》（版本6.1.1.01，腾势D9车机）、《神蓍广告安卓SDK》（版本6.5.1.8，官网）。<br/>7、通过自动化决策方式向个人进行信息推送、商业营销，未同时提供不针对其个人特征的选项，或者未向个人提供便捷的拒绝方式。涉及1款移动应用如下：<br/>《号令天下》（版本3.2.8，多多软件站）。<br/>8、个人信息处理者处理不满十四周岁未成年人个人信息的，未制定专门的个人信息处理规则；收集未成年人信息未取得监护人单独同意。涉及8款移动应用如下：<br/>《爱弹奏钢琴智能陪练》（版本5.6.7，应用宝）、《龙湖U享家》（版本6.0.15，应用宝）、《千千音乐》（版本8.3.1.7，应用宝）、《想家社区》（版本6.2.4，vivo应用商店）、《52高考》（版本4.6.6，联想应用商店）、《极序》（版本2.0.9，联想应用商店）、《早安心语》（版本1.6.9，OPPO软件商店）、《神蓍广告安卓SDK》（版本6.5.1.8，官网）。<br/>9、未采取相应的加密、去标识化等安全技术措施。涉及9款移动应用如下：<br/>《Miracle Games Android SDK》（版本1.3.10.0，官网）、《金茂荟》（版本3.2.7，小米应用商店）、《千千音乐》（版本8.3.1.7，应用宝）、《52高考》（版本4.6.6，联想应用商店）、《拍照识文字》（版本4.4.9，百度手机助手）、《推手管家》（版本5.4.4，苹果应用商店）、《豆豆钱》（版本7.9.19，当下软件园）、《萝卜投研》（版本5.0.5.0，当快软件园）、《喜马拉雅》（版本6.1.1.01，腾势D9车机）。<br/>10、无隐私政策。涉及14款移动应用如下：<br/>《天梯SDK》（版本1.8.5，官网）、《LinkAccount SDK》（版本1.0.52，官网）、《同步游戏联运》（版本1.4.7，官网）、《UNAD SDK》（版本2.6.9.4，官网）、《大树游戏SDK》（版本1.1.2，官网）、《DUIX Android SDK》（版本1.2.3，官网）、《凤展快生活》（版本19.9.9，火鸟手游网）、《昊游互娱安卓SDK》（版本6.0.2，官网）、《fusionAAS实名防沉迷系统SDK》（版本1，看云（<a href=\"https://www.kancloud.cn/\" target=\"_blank\">https://www.kancloud.cn/</a>））、《应用市场》（版本2.3.6.240527，比亚迪元车机）、《媒体中心》（版本1，比亚迪元车机）、《世茂物业》（版本1.0.4，2265安卓网）、《语音SDK》（版本5.0.2.4，官网）、《冰狐智能辅助-移动端SDK》（版本无，官网）。<br/></p>",
+        "category": "安全事件",
+        "publish_time": "2025-05-28T17:12:35",
+        "creator": "网络安全分析监控中心",
+        "hits": 193
+      },
+      {
+        "id": 17,
+        "news_id": "TG-20250528-003",
+        "title": "关于防范电话钓鱼攻击的预警通告",
+        "content": "<p>各单位：</p><p>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;根据各单位上报信息，发现疑似攻击队社会工程手段进行电话钓鱼攻击（移动电话、固定电话），以招聘、宣教、信息咨询等为由试图获取单位员工的个人信息和公司信息。</p><p>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;请各单位做好员工防社工钓鱼宣贯，不要在未经验证的情况下提供个人信息，如密码、身份证号等。公司不会通过邮件或电话要求员工提供敏感信息。如果收到可疑邮件或发现可疑活动，请各单位积极通过电话或S6000上报总指挥部。</p>",
+        "category": "安全事件",
+        "publish_time": "2025-05-28T16:26:09",
+        "creator": "网络安全分析监控中心",
+        "hits": 198
+      },
+      {
+        "id": 18,
+        "news_id": "TG-20250528-002",
+        "title": "关于电力交易平台存在未授权访问漏洞的风险预警通告",
+        "content": "<p>公司各单位：</p><p>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; 现监测发现电力交易平台存在未授权访问漏洞，请各单位对本单位部署的电力交易平台（PMOS）进行全面排查，梳理所有已开放的业务接口，检查是否启用了接口白名单免鉴权策略。对于存在风险的接口，应立即调整配置，关闭白名单或增加鉴权机制，确保仅授权用户可访问，防止用户敏感信息被泄露。</p><p>&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;附件已列举两个接口为例，其它可疑接口请各单位测试自查，预警通告无需反馈。</p>",
+        "category": "漏洞公告",
+        "publish_time": "2025-05-28T12:45:50",
+        "creator": "网络安全分析监控中心",
+        "hits": 326
+      },
+      {
+        "id": 19,
+        "news_id": "TG-20250527-002",
+        "title": "关于针对《预警-WA-20250425国网001号 Google Chrome沙箱逃逸漏洞》风险预警的补充说明",
+        "content": "<p>公司各单位：</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据红队方面通知，针对此项预警单，当前国网安全浏览器客户端在3.1.17.8版本进行了内核升级并修复了chrome沙箱逃逸漏洞，若存在无法将chrome升级至最新版本的情况，可将浏览器替换为国网安全浏览器相应版本即可解决。<br/></p>",
+        "category": "事件公告",
+        "publish_time": "2025-05-27T18:17:38",
+        "creator": "网络安全分析监控中心",
+        "hits": 1498
+      },
+      {
+        "id": 20,
+        "news_id": "TG-20250527-001",
+        "title": "关于APT组织“毒云藤”相关恶意IP和域名的通告",
+        "content": "<p>各单位：<br/>       近日，监测到APT组织“毒云藤”近期频繁对国内发起网络攻击，现有APT组织“毒云藤”近期攻击使用的恶意IP、域名，请各单位及时封禁。请各单位提高意识，加强防范。</p><p>165.22.97.48<br/>158.247.208.174<br/>128.199.134.13<br/>91.195.240.12<br/>caac-cn.org<br/>caac-cn.com</p>",
+        "category": "威胁分析",
+        "publish_time": "2025-05-27T17:07:35",
+        "creator": "韩啸",
+        "hits": 359
+      },
+      {
+        "id": 21,
+        "news_id": "TG-20250521-004",
+        "title": "关于广州某科技公司遭攻击的预警预防措施",
+        "content": "<p>各单位：</p><p>&nbsp; &nbsp; &nbsp; 近期，广州市公安局天河区分局发布警情通报称，广州某科技公司自助设备的后台系统遭境外黑客组织网络攻击。通报指出：黑客组织绕过了该公司的网络防护装置，非法进入自助设备的后台系统，通过横向移动，控制了多台网络设备并植入恶意代码，导致其官方网站和部分业务系统受到影响，网络服务中断数小时，部分用户隐私信息疑遭泄露。为强化防护，请各单位尽快排查网络隔离设备的有效性、加大跨网络的访问行为分析、立即核查杀毒软件更新情况并开展全网查杀，强化物联网终端的态势感知与核心重要数据的安全防护。</p>",
+        "category": "事件公告",
+        "publish_time": "2025-05-21T18:16:33",
+        "creator": "网络安全分析监控中心",
+        "hits": 1415
+      },
+      {
+        "id": 22,
+        "news_id": "TG-20250521-002",
+        "title": "关于防范钓鱼邮件的预警通告",
+        "content": "<p>各单位：</p><p>&nbsp; &nbsp; &nbsp; &nbsp;近日，检测到疑似受控账号：xzma@sgil.sgcc.com.cn（租赁公司），该账号5月20日共发送2000余封钓鱼邮件，邮件主题为“XXX关于补助通知”，邮件冒充补贴中心，声称对符合条件的人员进行社会保险补贴，诱导用户扫描二维码进行申请办理，从而访问钓鱼页面。请各单位提醒用户加强防范，如有发现攻击者线索请S6000上报溯源分析报告。<br/></p><p>附件MD5：06d203d01221d1c235aaf25e70909aea<br/>URL（二维码）：<a href=\"http://www.rmskdkfcd.click\" target=\"_blank\">http://www.rmskdkfcd.click/</a><br/></p>",
+        "category": "事件公告",
+        "publish_time": "2025-05-21T10:01:53",
+        "creator": "网络安全分析监控中心",
+        "hits": 243
+      },
+      {
+        "id": 23,
+        "news_id": "TG-20250521-001",
+        "title": "关于封禁东南亚APT组织“金眼狗”相关恶意IP、域名的通告",
+        "content": "<p>各单位：<br/>&nbsp; &nbsp; &nbsp; &nbsp;近日，监测到东南亚APT组织“金眼狗”的攻击，现有东南亚APT组织“金眼狗”相关恶意IP、域名（见附件），请各单位及时封禁。请各单位提高意识，加强防范。</p>",
+        "category": "事件公告",
+        "publish_time": "2025-05-21T09:38:22",
+        "creator": "网络安全分析监控中心",
+        "hits": 580
+      },
+      {
+        "id": 24,
+        "news_id": "TG-20250520-001",
+        "title": "关于防范违法违规收集使用个人信息移动应用的预警通告",
+        "content": "<p>近期，公安部计算机信息系统安全产品质量监督检验中心检测发现35款违法违规收集使用个人信息的移动应用，请各单位对照开展排查，及时删除违法违规软件，如发现信息泄漏事件第一时间上报。具体信息如下：<br/>1、未以结构化清单的方式逐一列出收集、使用个人信息规则。涉及 12 款移动应用如下：<br/><br/>《智慧 AI 聊天》（版本 1.4.0）、《虚拟恋爱 AI》（版本 1.1.3）、《轻抖》（版本 V3.2.400）、《剪辑软件》（版本 1.1.2）、《视频剪辑》（版本 26.9.82）、《爱剪》（版本 V1.0.0）、《视频编辑剪辑 cut》（版本 1.0.2）、《妙剪》（版本 1.55）、《智能出行》（版本 1.0.2）、《创游世界》（版本 1.56.0）、《AI音乐学园》（版本 7.1.1）、《台铃电动》（版本 3.3.5）。<br/><br/>2、实际收集的个人信息超出用户授权范围。涉及 18 款移动应用如下：<br/><br/>《智谱清言》（版本 2.9.6）、《Wink》（版本 2.7.0）、《剪印》（版本 24.03.26）、《抖影视频剪辑》（版本 1.2.8）、《Pr 视频剪辑》（版本 2.7.5）、《爱剪辑》（版本 80.21.0）、《免费剪辑视频》（版本 v1.1.8）、《剪辑软件》（版本 1.1.2）、《AI 视频成片》（版本 3.2.0）、《视频剪辑》（版本 26.9.82）、《妙剪》（版本 1.55）、《自律锁机》（版本 24.08.10）、《画世界》（版本 2.9.8）、《QCY》（版本 4.0.8）、《智能出行》（版本 1.0.2）、《创游世界》（版本 1.56.0）、《AVmini》（版本 4.2.0.12）、《小白学习打印》（版本 4.17.4）。<br/><br/>3、个人信息保护政策中描述收集的个人信息与业务功能无直接关联。涉及 2 款移动应用如下：<br/><br/>《AI 智能秘书》（版本 1.0.25）、《抖影视频剪辑》（版本 1.2.8）。<br/><br/>4、在配置文件中声明与移动应用的所有业务功能均没有直接关联的权限。涉及 8 款移动应用如下：<br/><br/>《AI 智能秘书》（版本 1.0.25）、《智慧 AI 聊天》（版本 1.4.0）、《AI 对话专家》（版本 1.0.17）、《QCY》（版本 4.0.8）、《来音吉他》（版本 3.5.8）、《台铃电动》（版本 3.3.5）、《Wow》（版本 1.16.5）、《猫箱》（版本 1.57.0）。<br/><br/>5、申请的可收集个人信息的权限与业务功能没有直接关联。涉及 1 款移动应用如下：<br/><br/>《AVmini》（版本 4.2.0.12）。<br/><br/>6、提前要求用户授权当前未使用的特定功能所需的权限。涉及 2 款移动应用如下：<br/><br/>《AI 剪辑》（版本 20.5）、《视频剪辑王》（版本 1.2.3）。<br/><br/>7、提前要求用户填写当前未使用的特定功能需要的个人信息。涉及 2 款移动应用如下：<br/><br/>《小白学习打印》（版本 4.17.4）、《台铃电动》（版本 3.3.5）。<br/><br/>8、实际收集的个人信息与业务功能没有直接关联。涉及 2 款移动应用如下：<br/><br/>《Kimi》（版本 2.0.8）、《Wink》（版本 2.7.0）。<br/><br/>9、实际收集个人信息的频率与业务功能没有直接关联。涉及 10 款移动应用如下：<br/><br/>《ChatGreat》（版本 1.1.3）、《虚拟恋爱 AI》（版本 1.1.3）、《轻抖》（版本 V3.2.400）、《免费剪辑视频》（版本 v1.1.8）、《剪辑软件》（版本 1.1.2）、《妙剪》（版本 1.55）、《创游世界》（版本 1.56.0）、《AVmini》（版本 4.2.0.12）、《台铃电动》（版本 3.3.5）、《Wow》（版本 1.16.5）。<br/><br/>10、未向用户提供更正或补充其个人信息的具体途径。涉及 1 款移动应用如下：<br/><br/>《ChatGreat》（版本 1.1.3）。<br/><br/>11、广告存在误导、欺骗用户行为。涉及 5 款移动应用如下：<br/><br/>《AI Genie》（版本 2.9.0）、《虚拟恋爱 AI》（版本 1.1.3）、《免费剪辑视频》（版本 v1.1.8）、《视频剪辑王》（版本 1.2.3）、《视频编辑剪辑 cut》（版本 1.0.2）。</p>",
+        "category": "安全事件",
+        "publish_time": "2025-05-20T18:31:57",
+        "creator": "网络安全分析监控中心",
+        "hits": 659
+      }
+    ]
+  },
+  "http://127.0.0.1:8000/dashboard/yjpt/high_risk/?limit=10": {
+    "data": [
+      {
+        "request_id": "highrisk_20250530164601",
+        "id": 205346,
+        "alert_time": "2025-05-30T08:46:07",
+        "src_ip": "180.98.17.169",
+        "src_port": "4258",
+        "dst_ip": "188.188.4.146",
+        "dst_port": "30005",
+        "s_system": "180.98.17.169",
+        "d_system": "188.188.4.146",
+        "alert_type": "Spring Boot Actuator未授权攻击",
+        "alert_level": "中",
+        "source_system": "微步",
+        "log_content": "<1>2025-05-30T08:46:07+08:00 tdpv3-svc Threatbook[64540]: {\"time\":1748565967,\"timeStr\":\"2025-05-30T08:46:07+08:00\",\"direction\":\"in\",\"machine\":\"188.188.4.146\",\"machine_port\":30005,\"external_ip\":\"180.98.17.169\",\"external_port\":0,\"attacker\":\"180.98.17.169\",\"victim\":\"188.188.4.146\",\"data\":\"127.0.0.1:30004/gdfw/gdfw.direwolf-sys/actuator/health\",\"incident_id\":\"\",\"behave_uuid\":\"shm1364652840664077\",\"is_black_ip\":false,\"net\":{\"src_ip\":\"186.186.2.122\",\"dest_ip\":\"188.188.4.146\",\"src_port\":4258,\"dest_port\":30005,\"proto\":\"TCP\",\"type\":\"http\",\"real_src_ip\":\"180.98.17.169\",\"http_xff\":\"180.98.17.169\",\"bytes_toserver\":3028,\"bytes_toclient\":2758,\"pkts_toserver\":17,\"pkts_toclient\":16,\"http\":{\"method\":\"GET\",\"reqs_header\":\"X-Forwarded-For: 10.35.82.205, 2408:850d:8400:ce48:8854:3ff:feee:5d07, 180.98.17.169, N/A\r\nX-Ca-request: 8444986e-600f-45a2-85e8-2d60e85d287d\r\nplatform: android\r\nversionName: v2.8.1\r\nphoneProducer: Xiaomi\r\nphoneModel: 25019PNF3C\r\nsystemVersion: 15\r\nHost: 127.0.0.1:30004\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nUser-Agent: okhttp/3.10.0\r\n\r\n\",\"reqs_line\":\"GET /gdfw/gdfw.direwolf-sys/actuator/health?platform=android&versionName=v2.8.1 HTTP/1.1\",\"reqs_body\":\"\",\"reqs_host\":\"127.0.0.1:30004\",\"reqs_content_length\":0,\"reqs_user_agent\":\"okhttp/3.10.0\",\"resp_header\":\"transfer-encoding: chunked\r\nExpires: 0\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nX-XSS-Protection: 1; mode=block\r\nPragma: no-cache\r\nDate: Fri, 30 May 2025 00:46:07 GMT\r\nX-Content-Type-Options: nosniff\r\nContent-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8\r\n\r\n\r\n\",\"resp_line\":\"HTTP/1.1 200 OK\",\"resp_set_cookie\":\"\",\"resp_body\":\"{\"description\":\"\",\"status\":\"UP\",\"details\":{\"application\":{\"description\":\"\",\"status\":\"UP\"}}}\",\"resp_content_length\":91,\"url\":\"/gdfw/gdfw.direwolf-sys/actuator/health?platform=android&versionName=v2.8.1\",\"protocol\":\"HTTP/1.1\",\"status\":200},\"dns\":{\"rrname\":\"\",\"id\":0,\"type\":\"\",\"rrtype\":\"\",\"rcode\":\"\",\"flags\":\"\",\"rdata\":\"\"},\"flow\":{\"state\":\"\",\"app_proto\":\"\"}},\"geo_data\":{\"Country\":\"中国\",\"Province\":\"江苏省\",\"City\":\"南京市\",\"ISO2\":\"CN\",\"Org\":\"\",\"Isp\":\"\",\"Latitude\":\"32.053245\",\"Longitude\":\"118.766351\",\"TimeZone\":\"\",\"UTC\":\"\",\"ChinaCode\":\"\",\"PhoneCode\":\"\",\"Continent\":\"\"},\"assets\":{\"name\":\"188\",\"ip\":\"188.188.0.0/16\",\"section\":\"服务器\",\"mac\":\"\",\"sub_type\":\"loadbalance\",\"group_branch\":\"\"},\"dest_assets\":{\"name\":\"\",\"ip\":\"\",\"section\":\"\",\"sub_type\":\"\"},\"threat\":{\"id\":\"d0sfvjsh6bgjv46acup0\",\"suuid\":\"S3100159454\",\"module\":\"autocc\",\"severity\":2,\"phase\":\"recon\",\"level\":\"attack\",\"type\":\"recon\",\"name\":\"Spring Boot Actuator未授权攻击\",\"ioc\":\"\",\"tag\":[\"Unauthorized\",\"Mitre: T1190: Exploit Public-Facing Application\",\"Mitre: T1213: Data from Information Repositories\"],\"msg\":\"在HTTP流量中检测到Spring Boot未授权访问流量。利用该漏洞可以直接访问敏感信息。资产内外之间的未授权访问定义为攻击，您也可以将告警调整为风险。\",\"result\":\"success\",\"is_apt\":0}}\n",
+        "attack_status": "成功"
+      },
+      {
+        "request_id": "highrisk_20250530164601",
+        "id": 205345,
+        "alert_time": "2025-05-30T08:46:07",
+        "src_ip": "180.98.17.169",
+        "src_port": "4258",
+        "dst_ip": "188.188.4.146",
+        "dst_port": "30005",
+        "s_system": "180.98.17.169",
+        "d_system": "188.188.4.146",
+        "alert_type": "Spring Boot Actuator未授权攻击",
+        "alert_level": "中",
+        "source_system": "微步",
+        "log_content": "<1>2025-05-30T08:46:07+08:00 tdpv3-svc Threatbook[64540]: {\"time\":1748565967,\"timeStr\":\"2025-05-30T08:46:07+08:00\",\"direction\":\"in\",\"machine\":\"188.188.4.146\",\"machine_port\":30005,\"external_ip\":\"180.98.17.169\",\"external_port\":0,\"attacker\":\"180.98.17.169\",\"victim\":\"188.188.4.146\",\"data\":\"127.0.0.1:30004/gdfw/gdfw.direwolf-auth/actuator/health\",\"incident_id\":\"\",\"behave_uuid\":\"shm1364652840664077\",\"is_black_ip\":false,\"net\":{\"src_ip\":\"186.186.2.122\",\"dest_ip\":\"188.188.4.146\",\"src_port\":4258,\"dest_port\":30005,\"proto\":\"TCP\",\"type\":\"http\",\"real_src_ip\":\"180.98.17.169\",\"http_xff\":\"180.98.17.169\",\"bytes_toserver\":1708,\"bytes_toclient\":1476,\"pkts_toserver\":11,\"pkts_toclient\":10,\"http\":{\"method\":\"GET\",\"reqs_header\":\"X-Forwarded-For: 10.35.82.205, 2408:850d:8400:ce48:8854:3ff:feee:5d07, 180.98.17.169, N/A\r\nX-Ca-request: d54f3f82-1832-48a4-a66a-a5f7d2821703\r\nplatform: android\r\nversionName: v2.8.1\r\nphoneProducer: Xiaomi\r\nphoneModel: 25019PNF3C\r\nsystemVersion: 15\r\nHost: 127.0.0.1:30004\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nUser-Agent: okhttp/3.10.0\r\n\r\n\",\"reqs_line\":\"GET /gdfw/gdfw.direwolf-auth/actuator/health?platform=android&versionName=v2.8.1 HTTP/1.1\",\"reqs_body\":\"\",\"reqs_host\":\"127.0.0.1:30004\",\"reqs_content_length\":0,\"reqs_user_agent\":\"okhttp/3.10.0\",\"resp_header\":\"transfer-encoding: chunked\r\nExpires: 0\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nX-XSS-Protection: 1; mode=block\r\nPragma: no-cache\r\nDate: Fri, 30 May 2025 00:46:07 GMT\r\nX-Content-Type-Options: nosniff\r\nContent-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8\r\n\r\n\r\n\",\"resp_line\":\"HTTP/1.1 200 OK\",\"resp_set_cookie\":\"\",\"resp_body\":\"{\"description\":\"\",\"status\":\"UP\"}\",\"resp_content_length\":32,\"url\":\"/gdfw/gdfw.direwolf-auth/actuator/health?platform=android&versionName=v2.8.1\",\"protocol\":\"HTTP/1.1\",\"status\":200},\"dns\":{\"rrname\":\"\",\"id\":0,\"type\":\"\",\"rrtype\":\"\",\"rcode\":\"\",\"flags\":\"\",\"rdata\":\"\"},\"flow\":{\"state\":\"\",\"app_proto\":\"\"}},\"geo_data\":{\"Country\":\"中国\",\"Province\":\"江苏省\",\"City\":\"南京市\",\"ISO2\":\"CN\",\"Org\":\"\",\"Isp\":\"\",\"Latitude\":\"32.053245\",\"Longitude\":\"118.766351\",\"TimeZone\":\"\",\"UTC\":\"\",\"ChinaCode\":\"\",\"PhoneCode\":\"\",\"Continent\":\"\"},\"assets\":{\"name\":\"188\",\"ip\":\"188.188.0.0/16\",\"section\":\"服务器\",\"mac\":\"\",\"sub_type\":\"loadbalance\",\"group_branch\":\"\"},\"dest_assets\":{\"name\":\"\",\"ip\":\"\",\"section\":\"\",\"sub_type\":\"\"},\"threat\":{\"id\":\"d0sfvjsh6bgjv46accng\",\"suuid\":\"S3100159454\",\"module\":\"autocc\",\"severity\":2,\"phase\":\"recon\",\"level\":\"attack\",\"type\":\"recon\",\"name\":\"Spring Boot Actuator未授权攻击\",\"ioc\":\"\",\"tag\":[\"Unauthorized\",\"Mitre: T1190: Exploit Public-Facing Application\",\"Mitre: T1213: Data from Information Repositories\"],\"msg\":\"在HTTP流量中检测到Spring Boot未授权访问流量。利用该漏洞可以直接访问敏感信息。资产内外之间的未授权访问定义为攻击，您也可以将告警调整为风险。\",\"result\":\"success\",\"is_apt\":0}}\n",
+        "attack_status": "成功"
+      },
+      {
+        "request_id": "highrisk_20250530164601",
+        "id": 205344,
+        "alert_time": "2025-05-30T08:46:07",
+        "src_ip": "180.98.17.169",
+        "src_port": "4258",
+        "dst_ip": "188.188.5.32",
+        "dst_port": "30005",
+        "s_system": "180.98.17.169",
+        "d_system": "188.188.5.32",
+        "alert_type": "Spring Boot Actuator未授权攻击",
+        "alert_level": "中",
+        "source_system": "微步",
+        "log_content": "<1>2025-05-30T08:46:07+08:00 tdpv3-svc Threatbook[64540]: {\"time\":1748565967,\"timeStr\":\"2025-05-30T08:46:07+08:00\",\"direction\":\"in\",\"machine\":\"188.188.5.32\",\"machine_port\":30005,\"external_ip\":\"180.98.17.169\",\"external_port\":0,\"attacker\":\"180.98.17.169\",\"victim\":\"188.188.5.32\",\"data\":\"127.0.0.1:30004/gdfw/gdfw.direwolf-sys/actuator/health\",\"incident_id\":\"\",\"behave_uuid\":\"shm1409419284816897\",\"is_black_ip\":false,\"net\":{\"src_ip\":\"188.188.4.133\",\"dest_ip\":\"188.188.5.32\",\"src_port\":4258,\"dest_port\":30005,\"proto\":\"TCP\",\"type\":\"http\",\"real_src_ip\":\"180.98.17.169\",\"http_xff\":\"180.98.17.169\",\"bytes_toserver\":1551,\"bytes_toclient\":1375,\"pkts_toserver\":9,\"pkts_toclient\":8,\"http\":{\"method\":\"GET\",\"reqs_header\":\"X-Forwarded-For: 10.35.82.205, 2408:850d:8400:ce48:8854:3ff:feee:5d07, 180.98.17.169, N/A\r\nX-Ca-request: 8444986e-600f-45a2-85e8-2d60e85d287d\r\nplatform: android\r\nversionName: v2.8.1\r\nphoneProducer: Xiaomi\r\nphoneModel: 25019PNF3C\r\nsystemVersion: 15\r\nHost: 127.0.0.1:30004\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nUser-Agent: okhttp/3.10.0\r\n\r\n\",\"reqs_line\":\"GET /gdfw/gdfw.direwolf-sys/actuator/health?platform=android&versionName=v2.8.1 HTTP/1.1\",\"reqs_body\":\"\",\"reqs_host\":\"127.0.0.1:30004\",\"reqs_content_length\":0,\"reqs_user_agent\":\"okhttp/3.10.0\",\"resp_header\":\"transfer-encoding: chunked\r\nExpires: 0\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nX-XSS-Protection: 1; mode=block\r\nPragma: no-cache\r\nDate: Fri, 30 May 2025 00:46:07 GMT\r\nX-Content-Type-Options: nosniff\r\nContent-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8\r\n\r\n\r\n\",\"resp_line\":\"HTTP/1.1 200 OK\",\"resp_set_cookie\":\"\",\"resp_body\":\"{\"description\":\"\",\"status\":\"UP\",\"details\":{\"application\":{\"description\":\"\",\"status\":\"UP\"}}}\",\"resp_content_length\":91,\"url\":\"/gdfw/gdfw.direwolf-sys/actuator/health?platform=android&versionName=v2.8.1\",\"protocol\":\"HTTP/1.1\",\"status\":200},\"dns\":{\"rrname\":\"\",\"id\":0,\"type\":\"\",\"rrtype\":\"\",\"rcode\":\"\",\"flags\":\"\",\"rdata\":\"\"},\"flow\":{\"state\":\"\",\"app_proto\":\"\"}},\"geo_data\":{\"Country\":\"中国\",\"Province\":\"江苏省\",\"City\":\"南京市\",\"ISO2\":\"CN\",\"Org\":\"\",\"Isp\":\"\",\"Latitude\":\"32.053245\",\"Longitude\":\"118.766351\",\"TimeZone\":\"\",\"UTC\":\"\",\"ChinaCode\":\"\",\"PhoneCode\":\"\",\"Continent\":\"\"},\"assets\":{\"name\":\"188\",\"ip\":\"188.188.0.0/16\",\"section\":\"服务器\",\"mac\":\"\",\"sub_type\":\"loadbalance\",\"group_branch\":\"\"},\"dest_assets\":{\"name\":\"\",\"ip\":\"\",\"section\":\"\",\"sub_type\":\"\"},\"threat\":{\"id\":\"d0sfvjsh6bgjv46acu20\",\"suuid\":\"S3100159454\",\"module\":\"autocc\",\"severity\":2,\"phase\":\"recon\",\"level\":\"attack\",\"type\":\"recon\",\"name\":\"Spring Boot Actuator未授权攻击\",\"ioc\":\"\",\"tag\":[\"Unauthorized\",\"Mitre: T1190: Exploit Public-Facing Application\",\"Mitre: T1213: Data from Information Repositories\"],\"msg\":\"在HTTP流量中检测到Spring Boot未授权访问流量。利用该漏洞可以直接访问敏感信息。资产内外之间的未授权访问定义为攻击，您也可以将告警调整为风险。\",\"result\":\"success\",\"is_apt\":0}}\n",
+        "attack_status": "成功"
+      },
+      {
+        "request_id": "highrisk_20250530164601",
+        "id": 205343,
+        "alert_time": "2025-05-30T08:46:07",
+        "src_ip": "180.98.17.169",
+        "src_port": "4258",
+        "dst_ip": "188.188.5.32",
+        "dst_port": "30005",
+        "s_system": "180.98.17.169",
+        "d_system": "188.188.5.32",
+        "alert_type": "Spring Boot Actuator未授权攻击",
+        "alert_level": "中",
+        "source_system": "微步",
+        "log_content": "<1>2025-05-30T08:46:07+08:00 tdpv3-svc Threatbook[64540]: {\"time\":1748565967,\"timeStr\":\"2025-05-30T08:46:07+08:00\",\"direction\":\"in\",\"machine\":\"188.188.5.32\",\"machine_port\":30005,\"external_ip\":\"180.98.17.169\",\"external_port\":0,\"attacker\":\"180.98.17.169\",\"victim\":\"188.188.5.32\",\"data\":\"127.0.0.1:30004/gdfw/gdfw.direwolf-auth/actuator/health\",\"incident_id\":\"\",\"behave_uuid\":\"shm1409419284816897\",\"is_black_ip\":false,\"net\":{\"src_ip\":\"188.188.4.133\",\"dest_ip\":\"188.188.5.32\",\"src_port\":4258,\"dest_port\":30005,\"proto\":\"TCP\",\"type\":\"http\",\"real_src_ip\":\"180.98.17.169\",\"http_xff\":\"180.98.17.169\",\"bytes_toserver\":891,\"bytes_toclient\":734,\"pkts_toserver\":6,\"pkts_toclient\":5,\"http\":{\"method\":\"GET\",\"reqs_header\":\"X-Forwarded-For: 10.35.82.205, 2408:850d:8400:ce48:8854:3ff:feee:5d07, 180.98.17.169, N/A\r\nX-Ca-request: d54f3f82-1832-48a4-a66a-a5f7d2821703\r\nplatform: android\r\nversionName: v2.8.1\r\nphoneProducer: Xiaomi\r\nphoneModel: 25019PNF3C\r\nsystemVersion: 15\r\nHost: 127.0.0.1:30004\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nUser-Agent: okhttp/3.10.0\r\n\r\n\",\"reqs_line\":\"GET /gdfw/gdfw.direwolf-auth/actuator/health?platform=android&versionName=v2.8.1 HTTP/1.1\",\"reqs_body\":\"\",\"reqs_host\":\"127.0.0.1:30004\",\"reqs_content_length\":0,\"reqs_user_agent\":\"okhttp/3.10.0\",\"resp_header\":\"transfer-encoding: chunked\r\nExpires: 0\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nX-XSS-Protection: 1; mode=block\r\nPragma: no-cache\r\nDate: Fri, 30 May 2025 00:46:07 GMT\r\nX-Content-Type-Options: nosniff\r\nContent-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8\r\n\r\n\r\n\",\"resp_line\":\"HTTP/1.1 200 OK\",\"resp_set_cookie\":\"\",\"resp_body\":\"{\"description\":\"\",\"status\":\"UP\"}\",\"resp_content_length\":32,\"url\":\"/gdfw/gdfw.direwolf-auth/actuator/health?platform=android&versionName=v2.8.1\",\"protocol\":\"HTTP/1.1\",\"status\":200},\"dns\":{\"rrname\":\"\",\"id\":0,\"type\":\"\",\"rrtype\":\"\",\"rcode\":\"\",\"flags\":\"\",\"rdata\":\"\"},\"flow\":{\"state\":\"\",\"app_proto\":\"\"}},\"geo_data\":{\"Country\":\"中国\",\"Province\":\"江苏省\",\"City\":\"南京市\",\"ISO2\":\"CN\",\"Org\":\"\",\"Isp\":\"\",\"Latitude\":\"32.053245\",\"Longitude\":\"118.766351\",\"TimeZone\":\"\",\"UTC\":\"\",\"ChinaCode\":\"\",\"PhoneCode\":\"\",\"Continent\":\"\"},\"assets\":{\"name\":\"188\",\"ip\":\"188.188.0.0/16\",\"section\":\"服务器\",\"mac\":\"\",\"sub_type\":\"loadbalance\",\"group_branch\":\"\"},\"dest_assets\":{\"name\":\"\",\"ip\":\"\",\"section\":\"\",\"sub_type\":\"\"},\"threat\":{\"id\":\"d0sfvjsh6bgjv46acbeg\",\"suuid\":\"S3100159454\",\"module\":\"autocc\",\"severity\":2,\"phase\":\"recon\",\"level\":\"attack\",\"type\":\"recon\",\"name\":\"Spring Boot Actuator未授权攻击\",\"ioc\":\"\",\"tag\":[\"Unauthorized\",\"Mitre: T1190: Exploit Public-Facing Application\",\"Mitre: T1213: Data from Information Repositories\"],\"msg\":\"在HTTP流量中检测到Spring Boot未授权访问流量。利用该漏洞可以直接访问敏感信息。资产内外之间的未授权访问定义为攻击，您也可以将告警调整为风险。\",\"result\":\"success\",\"is_apt\":0}}\n",
+        "attack_status": "成功"
+      },
+      {
+        "request_id": "highrisk_20250530164601",
+        "id": 205342,
+        "alert_time": "2025-05-30T08:24:14",
+        "src_ip": "::ffff:39.144.46.243",
+        "src_port": "58464",
+        "dst_ip": "188.188.4.146",
+        "dst_port": "30005",
+        "s_system": "::ffff:39.144.46.243",
+        "d_system": "188.188.4.146",
+        "alert_type": "Spring Boot Actuator未授权攻击",
+        "alert_level": "中",
+        "source_system": "微步",
+        "log_content": "<1>2025-05-30T08:24:14+08:00 tdpv3-svc Threatbook[64540]: {\"time\":1748564654,\"timeStr\":\"2025-05-30T08:24:14+08:00\",\"direction\":\"in\",\"machine\":\"188.188.4.146\",\"machine_port\":30005,\"external_ip\":\"::ffff:39.144.46.243\",\"external_port\":0,\"attacker\":\"::ffff:39.144.46.243\",\"victim\":\"188.188.4.146\",\"data\":\"127.0.0.1:30000/gdfw/gdfw.direwolf-sys/actuator\",\"incident_id\":\"30547516865b7243a8eb68bdd7915b88-1748557021\",\"behave_uuid\":\"shm1641862828836749\",\"is_black_ip\":false,\"net\":{\"src_ip\":\"186.186.2.122\",\"dest_ip\":\"188.188.4.146\",\"src_port\":58464,\"dest_port\":30005,\"proto\":\"TCP\",\"type\":\"http\",\"real_src_ip\":\"::ffff:39.144.46.243\",\"http_xff\":\"::ffff:39.144.46.243\",\"bytes_toserver\":1512,\"bytes_toclient\":1598,\"pkts_toserver\":9,\"pkts_toclient\":8,\"http\":{\"method\":\"GET\",\"reqs_header\":\"X-Forwarded-For: ::ffff:39.144.46.243\r\nX-Ca-request: 777aafb9-352b-4a2e-a990-a3c3bb6c79cb\r\nplatform: android\r\nversionName: v2.7.6(Build2022112701)\r\nphoneProducer: HUAWEI\r\nphoneModel: HBN-AL00\r\nsystemVersion: 12\r\nHost: 127.0.0.1:30000\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nUser-Agent: okhttp/3.10.0\r\n\r\n\",\"reqs_line\":\"GET /gdfw/gdfw.direwolf-sys/actuator?platform=android&versionName=v2.7.6%28Build2022112701%29 HTTP/1.1\",\"reqs_body\":\"\",\"reqs_host\":\"127.0.0.1:30000\",\"reqs_content_length\":0,\"reqs_user_agent\":\"okhttp/3.10.0\",\"resp_header\":\"transfer-encoding: chunked\r\nExpires: 0\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nX-XSS-Protection: 1; mode=block\r\nPragma: no-cache\r\nDate: Fri, 30 May 2025 00:24:14 GMT\r\nX-Content-Type-Options: nosniff\r\nContent-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8\r\n\r\n\r\n\",\"resp_line\":\"HTTP/1.1 200 OK\",\"resp_set_cookie\":\"\",\"resp_body\":\"{\"_links\":{\"self\":{\"href\":\"http://192.166.44.238:16101/actuator\",\"templated\":false},\"health\":{\"href\":\"http://192.166.44.238:16101/actuator/health\",\"templated\":false}}}\",\"resp_content_length\":167,\"url\":\"/gdfw/gdfw.direwolf-sys/actuator?platform=android&versionName=v2.7.6(Build2022112701)\",\"protocol\":\"HTTP/1.1\",\"status\":200},\"dns\":{\"rrname\":\"\",\"id\":0,\"type\":\"\",\"rrtype\":\"\",\"rcode\":\"\",\"flags\":\"\",\"rdata\":\"\"},\"flow\":{\"state\":\"\",\"app_proto\":\"\"}},\"geo_data\":{\"Country\":\"中国\",\"Province\":\"上海市\",\"City\":\"上海市\",\"ISO2\":\"CN\",\"Org\":\"\",\"Isp\":\"\",\"Latitude\":\"31.232382\",\"Longitude\":\"121.468973\",\"TimeZone\":\"\",\"UTC\":\"\",\"ChinaCode\":\"\",\"PhoneCode\":\"\",\"Continent\":\"\"},\"assets\":{\"name\":\"188\",\"ip\":\"188.188.0.0/16\",\"section\":\"服务器\",\"mac\":\"\",\"sub_type\":\"loadbalance\",\"group_branch\":\"\"},\"dest_assets\":{\"name\":\"\",\"ip\":\"\",\"section\":\"\",\"sub_type\":\"\"},\"threat\":{\"id\":\"d0sflbkh6bgjv40ghajg\",\"suuid\":\"D24513990cf\",\"module\":\"tdps\",\"severity\":2,\"phase\":\"exploit\",\"level\":\"attack\",\"type\":\"exploit\",\"name\":\"Spring Boot Actuator未授权攻击\",\"ioc\":\"\",\"tag\":[\"Unauthorized\"],\"msg\":\"检测到Spring Boot Actuator未授权攻击，泄露端点信息，请检查是否是正常业务，如果存在此漏洞，请尽量消除此弱点。\",\"result\":\"success\",\"is_apt\":0}}\n",
+        "attack_status": "成功"
+      },
+      {
+        "request_id": "highrisk_20250530164601",
+        "id": 205341,
+        "alert_time": "2025-05-30T08:24:14",
+        "src_ip": "::ffff:39.144.46.243",
+        "src_port": "58464",
+        "dst_ip": "188.188.4.146",
+        "dst_port": "30005",
+        "s_system": "::ffff:39.144.46.243",
+        "d_system": "188.188.4.146",
+        "alert_type": "Spring Boot Actuator未授权攻击",
+        "alert_level": "中",
+        "source_system": "微步",
+        "log_content": "<1>2025-05-30T08:24:14+08:00 tdpv3-svc Threatbook[64540]: {\"time\":1748564654,\"timeStr\":\"2025-05-30T08:24:14+08:00\",\"direction\":\"in\",\"machine\":\"188.188.4.146\",\"machine_port\":30005,\"external_ip\":\"::ffff:39.144.46.243\",\"external_port\":0,\"attacker\":\"::ffff:39.144.46.243\",\"victim\":\"188.188.4.146\",\"data\":\"127.0.0.1:30000/gdfw/gdfw.direwolf-sys/actuator\",\"incident_id\":\"30547516865b7243a8eb68bdd7915b88-1748557021\",\"behave_uuid\":\"shm1641862828836749\",\"is_black_ip\":false,\"net\":{\"src_ip\":\"186.186.2.122\",\"dest_ip\":\"188.188.4.146\",\"src_port\":58464,\"dest_port\":30005,\"proto\":\"TCP\",\"type\":\"http\",\"real_src_ip\":\"::ffff:39.144.46.243\",\"http_xff\":\"::ffff:39.144.46.243\",\"bytes_toserver\":1512,\"bytes_toclient\":1598,\"pkts_toserver\":9,\"pkts_toclient\":8,\"http\":{\"method\":\"GET\",\"reqs_header\":\"X-Forwarded-For: ::ffff:39.144.46.243\r\nX-Ca-request: 777aafb9-352b-4a2e-a990-a3c3bb6c79cb\r\nplatform: android\r\nversionName: v2.7.6(Build2022112701)\r\nphoneProducer: HUAWEI\r\nphoneModel: HBN-AL00\r\nsystemVersion: 12\r\nHost: 127.0.0.1:30000\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nUser-Agent: okhttp/3.10.0\r\n\r\n\",\"reqs_line\":\"GET /gdfw/gdfw.direwolf-sys/actuator?platform=android&versionName=v2.7.6%28Build2022112701%29 HTTP/1.1\",\"reqs_body\":\"\",\"reqs_host\":\"127.0.0.1:30000\",\"reqs_content_length\":0,\"reqs_user_agent\":\"okhttp/3.10.0\",\"resp_header\":\"transfer-encoding: chunked\r\nExpires: 0\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nX-XSS-Protection: 1; mode=block\r\nPragma: no-cache\r\nDate: Fri, 30 May 2025 00:24:14 GMT\r\nX-Content-Type-Options: nosniff\r\nContent-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8\r\n\r\n\r\n\",\"resp_line\":\"HTTP/1.1 200 OK\",\"resp_set_cookie\":\"\",\"resp_body\":\"{\"_links\":{\"self\":{\"href\":\"http://192.166.44.238:16101/actuator\",\"templated\":false},\"health\":{\"href\":\"http://192.166.44.238:16101/actuator/health\",\"templated\":false}}}\",\"resp_content_length\":167,\"url\":\"/gdfw/gdfw.direwolf-sys/actuator?platform=android&versionName=v2.7.6(Build2022112701)\",\"protocol\":\"HTTP/1.1\",\"status\":200},\"dns\":{\"rrname\":\"\",\"id\":0,\"type\":\"\",\"rrtype\":\"\",\"rcode\":\"\",\"flags\":\"\",\"rdata\":\"\"},\"flow\":{\"state\":\"\",\"app_proto\":\"\"}},\"geo_data\":{\"Country\":\"中国\",\"Province\":\"上海市\",\"City\":\"上海市\",\"ISO2\":\"CN\",\"Org\":\"\",\"Isp\":\"\",\"Latitude\":\"31.232382\",\"Longitude\":\"121.468973\",\"TimeZone\":\"\",\"UTC\":\"\",\"ChinaCode\":\"\",\"PhoneCode\":\"\",\"Continent\":\"\"},\"assets\":{\"name\":\"188\",\"ip\":\"188.188.0.0/16\",\"section\":\"服务器\",\"mac\":\"\",\"sub_type\":\"loadbalance\",\"group_branch\":\"\"},\"dest_assets\":{\"name\":\"\",\"ip\":\"\",\"section\":\"\",\"sub_type\":\"\"},\"threat\":{\"id\":\"d0sflbkh6bgjv40ghaig\",\"suuid\":\"S3100159454\",\"module\":\"autocc\",\"severity\":2,\"phase\":\"recon\",\"level\":\"attack\",\"type\":\"recon\",\"name\":\"Spring Boot Actuator未授权攻击\",\"ioc\":\"\",\"tag\":[\"Unauthorized\",\"Mitre: T1190: Exploit Public-Facing Application\",\"Mitre: T1213: Data from Information Repositories\"],\"msg\":\"在HTTP流量中检测到Spring Boot未授权访问流量。利用该漏洞可以直接访问敏感信息。资产内外之间的未授权访问定义为攻击，您也可以将告警调整为风险。\",\"result\":\"success\",\"is_apt\":0}}\n",
+        "attack_status": "成功"
+      },
+      {
+        "request_id": "highrisk_20250530164601",
+        "id": 205340,
+        "alert_time": "2025-05-30T08:24:14",
+        "src_ip": "::ffff:39.144.46.243",
+        "src_port": "58464",
+        "dst_ip": "188.188.5.17",
+        "dst_port": "30005",
+        "s_system": "::ffff:39.144.46.243",
+        "d_system": "188.188.5.17",
+        "alert_type": "Spring Boot Actuator未授权攻击",
+        "alert_level": "中",
+        "source_system": "微步",
+        "log_content": "<1>2025-05-30T08:24:14+08:00 tdpv3-svc Threatbook[64540]: {\"time\":1748564654,\"timeStr\":\"2025-05-30T08:24:14+08:00\",\"direction\":\"in\",\"machine\":\"188.188.5.17\",\"machine_port\":30005,\"external_ip\":\"::ffff:39.144.46.243\",\"external_port\":0,\"attacker\":\"::ffff:39.144.46.243\",\"victim\":\"188.188.5.17\",\"data\":\"127.0.0.1:30000/gdfw/gdfw.direwolf-auth/actuator\",\"incident_id\":\"30547516865b7243a8eb68bdd7915b88-1748557021\",\"behave_uuid\":\"shm301184492387891\",\"is_black_ip\":false,\"net\":{\"src_ip\":\"188.188.4.133\",\"dest_ip\":\"188.188.5.17\",\"src_port\":58464,\"dest_port\":30005,\"proto\":\"TCP\",\"type\":\"http\",\"real_src_ip\":\"::ffff:39.144.46.243\",\"http_xff\":\"::ffff:39.144.46.243\",\"bytes_toserver\":1431,\"bytes_toclient\":1586,\"pkts_toserver\":8,\"pkts_toclient\":8,\"http\":{\"method\":\"GET\",\"reqs_header\":\"X-Forwarded-For: ::ffff:39.144.46.243\r\nX-Ca-request: 2c4e8a1a-77f1-4a33-abde-3f19ee0016f8\r\nplatform: android\r\nversionName: v2.7.6(Build2022112701)\r\nphoneProducer: HUAWEI\r\nphoneModel: HBN-AL00\r\nsystemVersion: 12\r\nHost: 127.0.0.1:30000\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nUser-Agent: okhttp/3.10.0\r\n\r\n\",\"reqs_line\":\"GET /gdfw/gdfw.direwolf-auth/actuator?platform=android&versionName=v2.7.6%28Build2022112701%29 HTTP/1.1\",\"reqs_body\":\"\",\"reqs_host\":\"127.0.0.1:30000\",\"reqs_content_length\":0,\"reqs_user_agent\":\"okhttp/3.10.0\",\"resp_header\":\"transfer-encoding: chunked\r\nExpires: 0\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nX-XSS-Protection: 1; mode=block\r\nPragma: no-cache\r\nDate: Fri, 30 May 2025 00:24:14 GMT\r\nX-Content-Type-Options: nosniff\r\nContent-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8\r\n\r\n\r\n\",\"resp_line\":\"HTTP/1.1 200 OK\",\"resp_set_cookie\":\"\",\"resp_body\":\"{\"_links\":{\"self\":{\"href\":\"http://192.166.28.190:16102/actuator\",\"templated\":false},\"health\":{\"href\":\"http://192.166.28.190:16102/actuator/health\",\"templated\":false}}}\",\"resp_content_length\":167,\"url\":\"/gdfw/gdfw.direwolf-auth/actuator?platform=android&versionName=v2.7.6(Build2022112701)\",\"protocol\":\"HTTP/1.1\",\"status\":200},\"dns\":{\"rrname\":\"\",\"id\":0,\"type\":\"\",\"rrtype\":\"\",\"rcode\":\"\",\"flags\":\"\",\"rdata\":\"\"},\"flow\":{\"state\":\"\",\"app_proto\":\"\"}},\"geo_data\":{\"Country\":\"中国\",\"Province\":\"上海市\",\"City\":\"上海市\",\"ISO2\":\"CN\",\"Org\":\"\",\"Isp\":\"\",\"Latitude\":\"31.232382\",\"Longitude\":\"121.468973\",\"TimeZone\":\"\",\"UTC\":\"\",\"ChinaCode\":\"\",\"PhoneCode\":\"\",\"Continent\":\"\"},\"assets\":{\"name\":\"188\",\"ip\":\"188.188.0.0/16\",\"section\":\"服务器\",\"mac\":\"\",\"sub_type\":\"loadbalance\",\"group_branch\":\"\"},\"dest_assets\":{\"name\":\"\",\"ip\":\"\",\"section\":\"\",\"sub_type\":\"\"},\"threat\":{\"id\":\"d0sflbkh6bgjv40ghq0g\",\"suuid\":\"S3100159454\",\"module\":\"autocc\",\"severity\":2,\"phase\":\"recon\",\"level\":\"attack\",\"type\":\"recon\",\"name\":\"Spring Boot Actuator未授权攻击\",\"ioc\":\"\",\"tag\":[\"Unauthorized\",\"Mitre: T1190: Exploit Public-Facing Application\",\"Mitre: T1213: Data from Information Repositories\"],\"msg\":\"在HTTP流量中检测到Spring Boot未授权访问流量。利用该漏洞可以直接访问敏感信息。资产内外之间的未授权访问定义为攻击，您也可以将告警调整为风险。\",\"result\":\"success\",\"is_apt\":0}}\n",
+        "attack_status": "成功"
+      },
+      {
+        "request_id": "highrisk_20250530164601",
+        "id": 205339,
+        "alert_time": "2025-05-30T08:24:14",
+        "src_ip": "::ffff:39.144.46.243",
+        "src_port": "58464",
+        "dst_ip": "188.188.5.17",
+        "dst_port": "30005",
+        "s_system": "::ffff:39.144.46.243",
+        "d_system": "188.188.5.17",
+        "alert_type": "Spring Boot Actuator未授权攻击",
+        "alert_level": "中",
+        "source_system": "微步",
+        "log_content": "<1>2025-05-30T08:24:14+08:00 tdpv3-svc Threatbook[64540]: {\"time\":1748564654,\"timeStr\":\"2025-05-30T08:24:14+08:00\",\"direction\":\"in\",\"machine\":\"188.188.5.17\",\"machine_port\":30005,\"external_ip\":\"::ffff:39.144.46.243\",\"external_port\":0,\"attacker\":\"::ffff:39.144.46.243\",\"victim\":\"188.188.5.17\",\"data\":\"127.0.0.1:30000/gdfw/gdfw.direwolf-sys/actuator\",\"incident_id\":\"30547516865b7243a8eb68bdd7915b88-1748557021\",\"behave_uuid\":\"shm301184492387891\",\"is_black_ip\":false,\"net\":{\"src_ip\":\"188.188.4.133\",\"dest_ip\":\"188.188.5.17\",\"src_port\":58464,\"dest_port\":30005,\"proto\":\"TCP\",\"type\":\"http\",\"real_src_ip\":\"::ffff:39.144.46.243\",\"http_xff\":\"::ffff:39.144.46.243\",\"bytes_toserver\":793,\"bytes_toclient\":869,\"pkts_toserver\":5,\"pkts_toclient\":5,\"http\":{\"method\":\"GET\",\"reqs_header\":\"X-Forwarded-For: ::ffff:39.144.46.243\r\nX-Ca-request: 777aafb9-352b-4a2e-a990-a3c3bb6c79cb\r\nplatform: android\r\nversionName: v2.7.6(Build2022112701)\r\nphoneProducer: HUAWEI\r\nphoneModel: HBN-AL00\r\nsystemVersion: 12\r\nHost: 127.0.0.1:30000\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nUser-Agent: okhttp/3.10.0\r\n\r\n\",\"reqs_line\":\"GET /gdfw/gdfw.direwolf-sys/actuator?platform=android&versionName=v2.7.6%28Build2022112701%29 HTTP/1.1\",\"reqs_body\":\"\",\"reqs_host\":\"127.0.0.1:30000\",\"reqs_content_length\":0,\"reqs_user_agent\":\"okhttp/3.10.0\",\"resp_header\":\"transfer-encoding: chunked\r\nExpires: 0\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nX-XSS-Protection: 1; mode=block\r\nPragma: no-cache\r\nDate: Fri, 30 May 2025 00:24:14 GMT\r\nX-Content-Type-Options: nosniff\r\nContent-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8\r\n\r\n\r\n\",\"resp_line\":\"HTTP/1.1 200 OK\",\"resp_set_cookie\":\"\",\"resp_body\":\"{\"_links\":{\"self\":{\"href\":\"http://192.166.44.238:16101/actuator\",\"templated\":false},\"health\":{\"href\":\"http://192.166.44.238:16101/actuator/health\",\"templated\":false}}}\",\"resp_content_length\":167,\"url\":\"/gdfw/gdfw.direwolf-sys/actuator?platform=android&versionName=v2.7.6(Build2022112701)\",\"protocol\":\"HTTP/1.1\",\"status\":200},\"dns\":{\"rrname\":\"\",\"id\":0,\"type\":\"\",\"rrtype\":\"\",\"rcode\":\"\",\"flags\":\"\",\"rdata\":\"\"},\"flow\":{\"state\":\"\",\"app_proto\":\"\"}},\"geo_data\":{\"Country\":\"中国\",\"Province\":\"上海市\",\"City\":\"上海市\",\"ISO2\":\"CN\",\"Org\":\"\",\"Isp\":\"\",\"Latitude\":\"31.232382\",\"Longitude\":\"121.468973\",\"TimeZone\":\"\",\"UTC\":\"\",\"ChinaCode\":\"\",\"PhoneCode\":\"\",\"Continent\":\"\"},\"assets\":{\"name\":\"188\",\"ip\":\"188.188.0.0/16\",\"section\":\"服务器\",\"mac\":\"\",\"sub_type\":\"loadbalance\",\"group_branch\":\"\"},\"dest_assets\":{\"name\":\"\",\"ip\":\"\",\"section\":\"\",\"sub_type\":\"\"},\"threat\":{\"id\":\"d0sflbkh6bgjv40gha70\",\"suuid\":\"D24513990cf\",\"module\":\"tdps\",\"severity\":2,\"phase\":\"exploit\",\"level\":\"attack\",\"type\":\"exploit\",\"name\":\"Spring Boot Actuator未授权攻击\",\"ioc\":\"\",\"tag\":[\"Unauthorized\"],\"msg\":\"检测到Spring Boot Actuator未授权攻击，泄露端点信息，请检查是否是正常业务，如果存在此漏洞，请尽量消除此弱点。\",\"result\":\"success\",\"is_apt\":0}}\n",
+        "attack_status": "成功"
+      },
+      {
+        "request_id": "highrisk_20250530164601",
+        "id": 205338,
+        "alert_time": "2025-05-30T08:24:14",
+        "src_ip": "::ffff:39.144.46.243",
+        "src_port": "58464",
+        "dst_ip": "188.188.5.17",
+        "dst_port": "30005",
+        "s_system": "::ffff:39.144.46.243",
+        "d_system": "188.188.5.17",
+        "alert_type": "Spring Boot Actuator未授权攻击",
+        "alert_level": "中",
+        "source_system": "微步",
+        "log_content": "<1>2025-05-30T08:24:14+08:00 tdpv3-svc Threatbook[64540]: {\"time\":1748564654,\"timeStr\":\"2025-05-30T08:24:14+08:00\",\"direction\":\"in\",\"machine\":\"188.188.5.17\",\"machine_port\":30005,\"external_ip\":\"::ffff:39.144.46.243\",\"external_port\":0,\"attacker\":\"::ffff:39.144.46.243\",\"victim\":\"188.188.5.17\",\"data\":\"127.0.0.1:30000/gdfw/gdfw.direwolf-auth/actuator\",\"incident_id\":\"30547516865b7243a8eb68bdd7915b88-1748557021\",\"behave_uuid\":\"shm301184492387891\",\"is_black_ip\":false,\"net\":{\"src_ip\":\"188.188.4.133\",\"dest_ip\":\"188.188.5.17\",\"src_port\":58464,\"dest_port\":30005,\"proto\":\"TCP\",\"type\":\"http\",\"real_src_ip\":\"::ffff:39.144.46.243\",\"http_xff\":\"::ffff:39.144.46.243\",\"bytes_toserver\":1431,\"bytes_toclient\":1586,\"pkts_toserver\":8,\"pkts_toclient\":8,\"http\":{\"method\":\"GET\",\"reqs_header\":\"X-Forwarded-For: ::ffff:39.144.46.243\r\nX-Ca-request: 2c4e8a1a-77f1-4a33-abde-3f19ee0016f8\r\nplatform: android\r\nversionName: v2.7.6(Build2022112701)\r\nphoneProducer: HUAWEI\r\nphoneModel: HBN-AL00\r\nsystemVersion: 12\r\nHost: 127.0.0.1:30000\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nUser-Agent: okhttp/3.10.0\r\n\r\n\",\"reqs_line\":\"GET /gdfw/gdfw.direwolf-auth/actuator?platform=android&versionName=v2.7.6%28Build2022112701%29 HTTP/1.1\",\"reqs_body\":\"\",\"reqs_host\":\"127.0.0.1:30000\",\"reqs_content_length\":0,\"reqs_user_agent\":\"okhttp/3.10.0\",\"resp_header\":\"transfer-encoding: chunked\r\nExpires: 0\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nX-XSS-Protection: 1; mode=block\r\nPragma: no-cache\r\nDate: Fri, 30 May 2025 00:24:14 GMT\r\nX-Content-Type-Options: nosniff\r\nContent-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8\r\n\r\n\r\n\",\"resp_line\":\"HTTP/1.1 200 OK\",\"resp_set_cookie\":\"\",\"resp_body\":\"{\"_links\":{\"self\":{\"href\":\"http://192.166.28.190:16102/actuator\",\"templated\":false},\"health\":{\"href\":\"http://192.166.28.190:16102/actuator/health\",\"templated\":false}}}\",\"resp_content_length\":167,\"url\":\"/gdfw/gdfw.direwolf-auth/actuator?platform=android&versionName=v2.7.6(Build2022112701)\",\"protocol\":\"HTTP/1.1\",\"status\":200},\"dns\":{\"rrname\":\"\",\"id\":0,\"type\":\"\",\"rrtype\":\"\",\"rcode\":\"\",\"flags\":\"\",\"rdata\":\"\"},\"flow\":{\"state\":\"\",\"app_proto\":\"\"}},\"geo_data\":{\"Country\":\"中国\",\"Province\":\"上海市\",\"City\":\"上海市\",\"ISO2\":\"CN\",\"Org\":\"\",\"Isp\":\"\",\"Latitude\":\"31.232382\",\"Longitude\":\"121.468973\",\"TimeZone\":\"\",\"UTC\":\"\",\"ChinaCode\":\"\",\"PhoneCode\":\"\",\"Continent\":\"\"},\"assets\":{\"name\":\"188\",\"ip\":\"188.188.0.0/16\",\"section\":\"服务器\",\"mac\":\"\",\"sub_type\":\"loadbalance\",\"group_branch\":\"\"},\"dest_assets\":{\"name\":\"\",\"ip\":\"\",\"section\":\"\",\"sub_type\":\"\"},\"threat\":{\"id\":\"d0sflbkh6bgjv40ghpvg\",\"suuid\":\"D24513990cf\",\"module\":\"tdps\",\"severity\":2,\"phase\":\"exploit\",\"level\":\"attack\",\"type\":\"exploit\",\"name\":\"Spring Boot Actuator未授权攻击\",\"ioc\":\"\",\"tag\":[\"Unauthorized\"],\"msg\":\"检测到Spring Boot Actuator未授权攻击，泄露端点信息，请检查是否是正常业务，如果存在此漏洞，请尽量消除此弱点。\",\"result\":\"success\",\"is_apt\":0}}\n",
+        "attack_status": "成功"
+      },
+      {
+        "request_id": "highrisk_20250530164601",
+        "id": 205337,
+        "alert_time": "2025-05-30T08:24:14",
+        "src_ip": "::ffff:39.144.46.243",
+        "src_port": "58464",
+        "dst_ip": "188.188.5.17",
+        "dst_port": "30005",
+        "s_system": "::ffff:39.144.46.243",
+        "d_system": "188.188.5.17",
+        "alert_type": "Spring Boot Actuator未授权攻击",
+        "alert_level": "中",
+        "source_system": "微步",
+        "log_content": "<1>2025-05-30T08:24:14+08:00 tdpv3-svc Threatbook[64540]: {\"time\":1748564654,\"timeStr\":\"2025-05-30T08:24:14+08:00\",\"direction\":\"in\",\"machine\":\"188.188.5.17\",\"machine_port\":30005,\"external_ip\":\"::ffff:39.144.46.243\",\"external_port\":0,\"attacker\":\"::ffff:39.144.46.243\",\"victim\":\"188.188.5.17\",\"data\":\"127.0.0.1:30000/gdfw/gdfw.direwolf-sys/actuator\",\"incident_id\":\"30547516865b7243a8eb68bdd7915b88-1748557021\",\"behave_uuid\":\"shm301184492387891\",\"is_black_ip\":false,\"net\":{\"src_ip\":\"188.188.4.133\",\"dest_ip\":\"188.188.5.17\",\"src_port\":58464,\"dest_port\":30005,\"proto\":\"TCP\",\"type\":\"http\",\"real_src_ip\":\"::ffff:39.144.46.243\",\"http_xff\":\"::ffff:39.144.46.243\",\"bytes_toserver\":793,\"bytes_toclient\":869,\"pkts_toserver\":5,\"pkts_toclient\":5,\"http\":{\"method\":\"GET\",\"reqs_header\":\"X-Forwarded-For: ::ffff:39.144.46.243\r\nX-Ca-request: 777aafb9-352b-4a2e-a990-a3c3bb6c79cb\r\nplatform: android\r\nversionName: v2.7.6(Build2022112701)\r\nphoneProducer: HUAWEI\r\nphoneModel: HBN-AL00\r\nsystemVersion: 12\r\nHost: 127.0.0.1:30000\r\nConnection: Keep-Alive\r\nAccept-Encoding: gzip\r\nUser-Agent: okhttp/3.10.0\r\n\r\n\",\"reqs_line\":\"GET /gdfw/gdfw.direwolf-sys/actuator?platform=android&versionName=v2.7.6%28Build2022112701%29 HTTP/1.1\",\"reqs_body\":\"\",\"reqs_host\":\"127.0.0.1:30000\",\"reqs_content_length\":0,\"reqs_user_agent\":\"okhttp/3.10.0\",\"resp_header\":\"transfer-encoding: chunked\r\nExpires: 0\r\nCache-Control: no-cache, no-store, max-age=0, must-revalidate\r\nX-XSS-Protection: 1; mode=block\r\nPragma: no-cache\r\nDate: Fri, 30 May 2025 00:24:14 GMT\r\nX-Content-Type-Options: nosniff\r\nContent-Type: application/vnd.spring-boot.actuator.v2+json;charset=UTF-8\r\n\r\n\r\n\",\"resp_line\":\"HTTP/1.1 200 OK\",\"resp_set_cookie\":\"\",\"resp_body\":\"{\"_links\":{\"self\":{\"href\":\"http://192.166.44.238:16101/actuator\",\"templated\":false},\"health\":{\"href\":\"http://192.166.44.238:16101/actuator/health\",\"templated\":false}}}\",\"resp_content_length\":167,\"url\":\"/gdfw/gdfw.direwolf-sys/actuator?platform=android&versionName=v2.7.6(Build2022112701)\",\"protocol\":\"HTTP/1.1\",\"status\":200},\"dns\":{\"rrname\":\"\",\"id\":0,\"type\":\"\",\"rrtype\":\"\",\"rcode\":\"\",\"flags\":\"\",\"rdata\":\"\"},\"flow\":{\"state\":\"\",\"app_proto\":\"\"}},\"geo_data\":{\"Country\":\"中国\",\"Province\":\"上海市\",\"City\":\"上海市\",\"ISO2\":\"CN\",\"Org\":\"\",\"Isp\":\"\",\"Latitude\":\"31.232382\",\"Longitude\":\"121.468973\",\"TimeZone\":\"\",\"UTC\":\"\",\"ChinaCode\":\"\",\"PhoneCode\":\"\",\"Continent\":\"\"},\"assets\":{\"name\":\"188\",\"ip\":\"188.188.0.0/16\",\"section\":\"服务器\",\"mac\":\"\",\"sub_type\":\"loadbalance\",\"group_branch\":\"\"},\"dest_assets\":{\"name\":\"\",\"ip\":\"\",\"section\":\"\",\"sub_type\":\"\"},\"threat\":{\"id\":\"d0sflbkh6bgjv40gha10\",\"suuid\":\"S3100159454\",\"module\":\"autocc\",\"severity\":2,\"phase\":\"recon\",\"level\":\"attack\",\"type\":\"recon\",\"name\":\"Spring Boot Actuator未授权攻击\",\"ioc\":\"\",\"tag\":[\"Unauthorized\",\"Mitre: T1190: Exploit Public-Facing Application\",\"Mitre: T1213: Data from Information Repositories\"],\"msg\":\"在HTTP流量中检测到Spring Boot未授权访问流量。利用该漏洞可以直接访问敏感信息。资产内外之间的未授权访问定义为攻击，您也可以将告警调整为风险。\",\"result\":\"success\",\"is_apt\":0}}\n",
+        "attack_status": "成功"
+      }
+    ]
+  }
+}

@@ -17,8 +17,8 @@ import CacheService from './cacheService';
 // Define which service to use for each function.
 // Options: 'api' or 'mock'. 'default' is the fallback.
 const DATA_SOURCES: { [key: string]: 'api' | 'mock' } = {
-  default: 'api', // 默认使用真实 API
-  getRealtimeAttacks: 'mock', // ⚠️ 强制实时攻击数据走 mock，实现密集/稀疏分布
+  default: 'mock', // 全局mock模式
+  // getRealtimeAttacks: 'mock', // 全部接口统一走mock，无需特殊case
 };
 
 // 缓存服务实例
@@ -99,6 +99,13 @@ export const getSecurityAlerts = async (limit: number = 10): Promise<SecurityAle
 export const getHighRiskEvents = async (limit: number = 10): Promise<any[]> => {
   const service = await getService('getHighRiskEvents');
   const result = await fetchWithCache(() => service.getHighRiskEvents(limit), []);
+  return result || [];
+};
+
+// 主机安全事件
+export const getHostSecurityEvents = async (limit: number = 10): Promise<any[]> => {
+  const service = await getService('getHostSecurityEvents');
+  const result = await fetchWithCache(() => service.getHostSecurityEvents(limit), []);
   return result || [];
 };
 
@@ -214,6 +221,10 @@ export async function refreshAndCacheData(): Promise<Partial<DashboardData>> {
 
     const overallAttackData = visualizationData ? [visualizationData] : [];
 
+    // 新增高危攻击事件和主机安全事件
+    const highRiskEvents = await getHighRiskEvents(10);
+    const hostSecurityEvents = await getHostSecurityEvents(10);
+
     const dashboardData: Partial<DashboardData> = {
       overallAttackData,
       attackSources,
@@ -221,6 +232,8 @@ export async function refreshAndCacheData(): Promise<Partial<DashboardData>> {
       realtimeAttacks,
       securityAlerts,
       historicalTrend,
+      highRiskEvents,
+      hostSecurityEvents,
     };
 
     // 保存到缓存
