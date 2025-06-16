@@ -16,6 +16,23 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
   dashboardData,
   highRiskEvents,
 }) => {
+  // 根据类别返回不同的颜色样式
+  const getCategoryStyle = (category: string) => {
+    const categoryLower = category.toLowerCase();
+    if (categoryLower.includes('预警') || categoryLower.includes('警告')) {
+      return 'text-red-400 bg-red-400/10';
+    } else if (categoryLower.includes('通知') || categoryLower.includes('公告')) {
+      return 'text-blue-400 bg-blue-400/10';
+    } else if (categoryLower.includes('安全') || categoryLower.includes('防护')) {
+      return 'text-green-400 bg-green-400/10';
+    } else if (categoryLower.includes('漏洞') || categoryLower.includes('风险')) {
+      return 'text-orange-400 bg-orange-400/10';
+    } else if (categoryLower.includes('威胁') || categoryLower.includes('攻击')) {
+      return 'text-purple-400 bg-purple-400/10';
+    }
+    return 'text-[#00d9ff] bg-[#00d9ff]/10'; // 默认颜色
+  };
+
   return (
     <section className="basis-[28%] flex flex-col h-full gap-3 shrink-0">
       <div className="flex flex-col space-y-3 overflow-y-auto bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue flex-grow-[2]" style={{maxHeight: '66.66%'}}>
@@ -45,10 +62,40 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
           <span className="text-[#00d9ff] uppercase tracking-widest text-lg">S6000 网省联动</span>
         </h2>
         {dashboardData.securityAlerts && dashboardData.securityAlerts.length > 0 ? (
-          <div className="h-full overflow-y-auto pr-1 security-alerts-container">
-            <ul className="space-y-3 text-xs pt-1">
-              {dashboardData.securityAlerts.map(alert => {
-                // 提取纯文本内容摘要（去除HTML标签）
+          <div className="h-full overflow-hidden pr-1 security-alerts-container relative">
+            <div 
+              className="infinite-scroll-list"
+              style={{
+                animation: `infiniteScroll ${dashboardData.securityAlerts.length * 4}s infinite ease-in-out`
+              }}
+            >
+              <style>
+                {`
+                  @keyframes infiniteScroll {
+                    ${(dashboardData.securityAlerts || []).map((_, index) => {
+                      const totalItems = dashboardData.securityAlerts?.length || 0;
+                      const itemDuration = 100 / totalItems; // Each item gets equal percentage
+                      const stayPercent = itemDuration * 0.75; // 75% of time staying
+                      
+                      const startPercent = index * itemDuration;
+                      const stayEndPercent = startPercent + stayPercent;
+                      const endPercent = (index + 1) * itemDuration;
+                      
+                      const currentPosition = -index * 132;
+                      const nextPosition = -(index + 1) * 132;
+                      
+                      return `
+                        ${startPercent.toFixed(2)}% { transform: translateY(${currentPosition}px); }
+                        ${stayEndPercent.toFixed(2)}% { transform: translateY(${currentPosition}px); }
+                        ${endPercent.toFixed(2)}% { transform: translateY(${nextPosition}px); }
+                      `;
+                    }).join('')}
+                    100% { transform: translateY(-${(dashboardData.securityAlerts?.length || 0) * 132}px); }
+                  }
+                `}
+              </style>
+              {/* 原始列表 */}
+              {dashboardData.securityAlerts.map((alert) => {
                 const getTextContent = (html: string) => {
                   const div = document.createElement('div');
                   div.innerHTML = html;
@@ -57,30 +104,61 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
                 const contentPreview = getTextContent(alert.content).substring(0, 80) + '...';
                 
                 return (
-                  <li key={alert.id} className="flex flex-col py-2 px-3 bg-slate-800/60 rounded-lg border-l-2 border-[#00d9ff]/50">
+                  <div key={`original-${alert.id}`} className="flex flex-col py-2 px-3 bg-slate-800/60 rounded-lg mb-3" style={{height: '120px', minHeight: '120px'}}>
                     <div className="flex items-start justify-between mb-1">
-                      <span className="text-[#00d9ff] text-xxs font-medium bg-[#00d9ff]/10 px-2 py-0.5 rounded">
-                        {alert.category}
-                      </span>
-                      <span className="text-slate-500 text-xxs">{alert.news_id}</span>
+                      <div className="flex items-center gap-2">
+                        <span className={`text-xxs font-medium px-2 py-0.5 rounded ${getCategoryStyle(alert.category)}`}>
+                          {alert.category}
+                        </span>
+                        <h3 className="font-semibold text-[#ffb74d] text-sm leading-tight">{alert.title}</h3>
+                      </div>
                     </div>
-                    <h3 className="font-semibold text-[#ffb74d] text-sm mb-1 leading-tight">{alert.title}</h3>
                     <p className="text-slate-300 text-xxs mb-2 leading-relaxed">{contentPreview}</p>
                     <div className="flex items-center justify-between text-xxs text-slate-400">
                       <span>发布: {alert.creator}</span>
                       <div className="flex items-center gap-2">
-                        <span>👁 {alert.hits}</span>
+                        <span>{alert.news_id}</span>
                         <span>{new Date(alert.publish_time).toLocaleDateString()}</span>
                       </div>
                     </div>
-                  </li>
+                  </div>
                 );
               })}
-            </ul>
+              {/* 重复列表以实现无缝循环 */}
+              {dashboardData.securityAlerts.map((alert) => {
+                const getTextContent = (html: string) => {
+                  const div = document.createElement('div');
+                  div.innerHTML = html;
+                  return div.textContent || div.innerText || '';
+                };
+                const contentPreview = getTextContent(alert.content).substring(0, 80) + '...';
+                
+                return (
+                  <div key={`repeat-${alert.id}`} className="flex flex-col py-2 px-3 bg-slate-800/60 rounded-lg mb-3" style={{height: '120px', minHeight: '120px'}}>
+                    <div className="flex items-start justify-between mb-1">
+                      <div className="flex items-center gap-2">
+                        <span className={`text-xxs font-medium px-2 py-0.5 rounded ${getCategoryStyle(alert.category)}`}>
+                          {alert.category}
+                        </span>
+                        <h3 className="font-semibold text-[#ffb74d] text-sm leading-tight">{alert.title}</h3>
+                      </div>
+                    </div>
+                    <p className="text-slate-300 text-xxs mb-2 leading-relaxed">{contentPreview}</p>
+                    <div className="flex items-center justify-between text-xxs text-slate-400">
+                      <span>发布: {alert.creator}</span>
+                      <div className="flex items-center gap-2">
+                        <span>{alert.news_id}</span>
+                        <span>{new Date(alert.publish_time).toLocaleDateString()}</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         ) : <p className="text-slate-500 text-xs pl-1">无安全预警</p>}
       </div>
-       <div className="bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue flex-grow min-h-0">
+      <div className="bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue flex-grow min-h-0">
         <h3 className="text-xs font-medium text-[#00d9ff] uppercase tracking-wider mb-2">预警平台 高危攻击事件&主机安全事件</h3>
         <div className="overflow-x-auto rounded">
           <table className="min-w-full text-xs text-left text-gray-200">
@@ -108,4 +186,4 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
   );
 };
 
-export default RightSidebar; 
+export default RightSidebar;
