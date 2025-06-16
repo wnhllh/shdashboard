@@ -2,6 +2,7 @@ import React from 'react';
 import type { SankeyData, AttackTypeDistribution, DashboardData, HighRiskEvent } from '@/types/data';
 import D3SankeyAttackedSystemsChart from '@/components/charts/D3SankeyAttackedSystemsChart';
 import D3AttackTypeDistributionChart from '@/components/charts/D3AttackTypeDistributionChart';
+import { useState, useEffect } from 'react';
 
 interface RightSidebarProps {
   sankeyAttackedSystemsData: SankeyData | null;
@@ -16,6 +17,17 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
   dashboardData,
   highRiskEvents,
 }) => {
+  const [activeTab, setActiveTab] = useState<'attack' | 'host'>('attack');
+
+  // 自动切换功能
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTab(prev => prev === 'attack' ? 'host' : 'attack');
+    }, 5000); // 每5秒切换一次
+
+    return () => clearInterval(interval);
+  }, []);
+
   // 根据类别返回不同的颜色样式
   const getCategoryStyle = (category: string) => {
     const categoryLower = category.toLowerCase();
@@ -159,27 +171,176 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
         ) : <p className="text-slate-500 text-xs pl-1">无安全预警</p>}
       </div>
       <div className="bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue flex-grow min-h-0">
-        <h3 className="text-xs font-medium text-[#00d9ff] uppercase tracking-wider mb-2">预警平台 高危攻击事件&主机安全事件</h3>
-        <div className="overflow-x-auto rounded">
-          <table className="min-w-full text-xs text-left text-gray-200">
-            <thead className="text-[#00d9ff] bg-[#0f2744dd]">
-              <tr>
-                <th className="px-3 py-2">源IP</th><th className="px-3 py-2">目的IP</th>
-                <th className="px-3 py-2">告警类型</th><th className="px-3 py-2">等级</th><th className="px-3 py-2">状态</th>
-              </tr>
-            </thead>
-            <tbody>
-              {highRiskEvents.map((item, idx) => (
-                <tr key={idx} className={`border-b border-[#00d9ff]/10 ${idx % 2 === 0 ? 'bg-[#112240dd]' : 'bg-[#0d1a30dd]'}`}>
-                  <td className="px-3 py-2">{item.src_ip}</td><td className="px-3 py-2">{item.dst_ip}</td>
-                  <td className="px-3 py-2">{item.alert_type}</td><td className="px-3 py-2">{item.alert_level}</td>
-                  <td className="px-3 py-2">
-                    <span className={item.attack_status === '成功' ? 'text-red-400' : 'text-green-400'}>{item.attack_status}</span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <h3 className="text-xs font-medium text-[#00d9ff] uppercase tracking-wider mb-2">预警平台</h3>
+        
+        {/* 选项卡切换 */}
+        <div className="flex mb-3 relative">
+          <div className="flex bg-slate-800/50 rounded-lg p-1 relative">
+            <button
+              onClick={() => setActiveTab('attack')}
+              className={`px-3 py-1 text-xs font-medium rounded-md transition-colors duration-200 ${
+                activeTab === 'attack' 
+                  ? 'bg-[#00d9ff]/20 text-[#00d9ff] shadow-lg' 
+                  : 'text-slate-400 hover:text-slate-300'
+              }`}
+            >
+              高危攻击事件
+            </button>
+            <button
+              onClick={() => setActiveTab('host')}
+              className={`px-3 py-1 text-xs font-medium rounded-md transition-colors duration-200 ${
+                activeTab === 'host' 
+                  ? 'bg-[#00d9ff]/20 text-[#00d9ff] shadow-lg' 
+                  : 'text-slate-400 hover:text-slate-300'
+              }`}
+            >
+              主机安全事件
+            </button>
+          </div>
+          {/* 自动切换指示器 */}
+          <div className="ml-2 flex items-center">
+            <div className="w-2 h-2 bg-[#00d9ff] rounded-full animate-pulse"></div>
+            <span className="ml-1 text-xs text-slate-400">自动切换</span>
+          </div>
+        </div>
+
+        {/* 内容区域 */}
+        <div className="overflow-hidden">
+          <div className="flex transition-transform duration-500 ease-in-out" 
+               style={{ transform: `translateX(${activeTab === 'attack' ? '0%' : '-100%'})` }}>
+            
+            {/* 高危攻击事件 */}
+            <div className="w-full flex-shrink-0">
+              <div className="overflow-hidden">
+                <div className="rounded-md overflow-hidden border border-slate-700/30 max-h-48">
+                  <div className="overflow-y-auto max-h-48">
+                    <table className="min-w-full text-xs table-fixed">
+                      <colgroup>
+                        <col className="min-w-[96px] max-w-[140px]" />
+                        <col className="min-w-[96px] max-w-[140px]" />
+                        <col className="w-12" />
+                        <col className="w-10" />
+                        <col className="w-10" />
+                      </colgroup>
+                      <thead className="sticky top-0">
+                        <tr className="bg-slate-800/90 border-b border-slate-600/40">
+                          <th className="px-1 py-2 text-left text-[#00d9ff] font-medium text-xs">源IP</th>
+                          <th className="px-1 py-2 text-left text-[#00d9ff] font-medium text-xs">目的IP</th>
+                          <th className="px-2 py-2 text-left text-[#00d9ff] font-medium text-xs">攻击类型</th>
+                          <th className="px-1 py-2 text-left text-[#00d9ff] font-medium text-xs">级</th>
+                          <th className="px-1 py-2 text-left text-[#00d9ff] font-medium text-xs">状态</th>
+                        </tr>
+                      </thead>
+                      <tbody className="bg-slate-900/60">
+                        {highRiskEvents.filter(item => item.alert_type.includes('攻击') || item.alert_type.includes('入侵'))
+                          .slice(0, 8).map((item, idx) => (
+                          <tr key={`attack-${idx}`} className={`
+                            border-b border-slate-700/20 hover:bg-slate-700/30 transition-colors duration-150
+                            ${idx % 2 === 0 ? 'bg-slate-800/30' : 'bg-slate-800/50'}
+                          `}>
+                            <td className="px-1 py-1.5 font-mono text-xs text-slate-300 truncate" title={item.src_ip}>
+                              {item.src_ip}
+                            </td>
+                            <td className="px-1 py-1.5 font-mono text-xs text-slate-300 truncate" title={item.dst_ip}>
+                              {item.dst_ip}
+                            </td>
+                            <td className="px-2 py-1.5">
+                              <span className="px-1.5 py-0.5 bg-red-500/25 text-red-300 rounded text-xs font-medium block truncate" title={item.alert_type}>
+                                {item.alert_type}
+                              </span>
+                            </td>
+                            <td className="px-1 py-1.5">
+                              <span className={`px-1 py-0.5 rounded text-xs font-medium ${
+                                item.alert_level === '高' ? 'bg-red-500/25 text-red-300' :
+                                item.alert_level === '中' ? 'bg-orange-500/25 text-orange-300' :
+                                'bg-yellow-500/25 text-yellow-300'
+                              }`}>
+                                {item.alert_level}
+                              </span>
+                            </td>
+                            <td className="px-1 py-1.5">
+                              <span className={`px-1 py-0.5 rounded text-xs font-medium ${
+                                item.attack_status === '成功' ? 'bg-red-500/25 text-red-300' : 'bg-green-500/25 text-green-300'
+                              }`}>
+                                {item.attack_status === '成功' ? '成功' : '失败'}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 主机安全事件 */}
+            <div className="w-full flex-shrink-0">
+              <div className="overflow-hidden">
+                <div className="rounded-md overflow-hidden border border-slate-700/30 max-h-48">
+                  <div className="overflow-y-auto max-h-48">
+                    <table className="min-w-full text-xs table-fixed">
+                      <colgroup>
+                        <col className="min-w-[96px] max-w-[140px]" />
+                        <col className="w-12" />
+                        <col className="w-10" />
+                        <col className="w-12" />
+                        <col className="w-12" />
+                      </colgroup>
+                      <thead className="sticky top-0">
+                        <tr className="bg-slate-800/90 border-b border-slate-600/40">
+                          <th className="px-1 py-2 text-left text-[#00d9ff] font-medium text-xs">主机IP</th>
+                          <th className="px-2 py-2 text-left text-[#00d9ff] font-medium text-xs">事件类型</th>
+                          <th className="px-1 py-2 text-left text-[#00d9ff] font-medium text-xs">级</th>
+                          <th className="px-1 py-2 text-left text-[#00d9ff] font-medium text-xs">状态</th>
+                          <th className="px-1 py-2 text-left text-[#00d9ff] font-medium text-xs">时间</th>
+                        </tr>
+                      </thead>
+                      <tbody className="bg-slate-900/60">
+                        {highRiskEvents.filter(item => item.alert_type.includes('主机') || item.alert_type.includes('病毒') || item.alert_type.includes('木马'))
+                          .slice(0, 8).map((item, idx) => (
+                          <tr key={`host-${idx}`} className={`
+                            border-b border-slate-700/20 hover:bg-slate-700/30 transition-colors duration-150
+                            ${idx % 2 === 0 ? 'bg-slate-800/30' : 'bg-slate-800/50'}
+                          `}>
+                            <td className="px-1 py-1.5 font-mono text-xs text-slate-300 truncate" title={item.dst_ip}>
+                              {item.dst_ip}
+                            </td>
+                            <td className="px-2 py-1.5">
+                              <span className="px-1.5 py-0.5 bg-purple-500/25 text-purple-300 rounded text-xs font-medium block truncate" title={item.alert_type}>
+                                {item.alert_type}
+                              </span>
+                            </td>
+                            <td className="px-1 py-1.5">
+                              <span className={`px-1 py-0.5 rounded text-xs font-medium ${
+                                item.alert_level === '高' ? 'bg-red-500/25 text-red-300' :
+                                item.alert_level === '中' ? 'bg-orange-500/25 text-orange-300' :
+                                'bg-yellow-500/25 text-yellow-300'
+                              }`}>
+                                {item.alert_level}
+                              </span>
+                            </td>
+                            <td className="px-1 py-1.5">
+                              <span className={`px-1 py-0.5 rounded text-xs font-medium truncate ${
+                                item.attack_status === '成功' ? 'bg-green-500/25 text-green-300' :
+                                item.attack_status === '阻断' ? 'bg-blue-500/25 text-blue-300' :
+                                'bg-red-500/25 text-red-300'
+                              }`}>
+                                {item.attack_status.length > 2 ? item.attack_status.substring(0, 2) : item.attack_status}
+                              </span>
+                            </td>
+                            <td className="px-1 py-1.5 text-slate-400 font-mono text-xs">
+                              {new Date().toLocaleTimeString('zh-CN', { hour12: false }).substring(0, 5)}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
