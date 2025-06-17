@@ -44,13 +44,13 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
 
   return (
     <section
-      className="flex flex-col h-full gap-3 shrink-0"
+      className="flex flex-col h-full gap-3 shrink-0 border-2 border-[#00d9ff]/30 rounded-lg p-2 bg-black/20 shadow-[0_0_20px_rgba(0,217,255,0.3)]"
       style={{ flexBasis: width, maxWidth: width, minWidth: width }}
     >
       {/* 邮件通知 */}
       <EmailNotification />
       <div
-        className="bg-black p-4 rounded-lg shadow-glow-blue flex-grow min-h-0"
+        className="bg-black p-4 rounded-lg shadow-glow-blue flex-grow min-h-0 border border-[#00d9ff]/20"
         style={{ maxHeight: '100%', overflowY: 'auto' }}
       >
         <h2 className="text-base font-medium relative flex items-center mb-3">
@@ -143,7 +143,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
         ) : <p className="text-slate-500 text-xs pl-1">无安全预警</p>}
       </div>
       <div
-        className="bg-black p-4 rounded-lg shadow-glow-blue flex-grow min-h-0"
+        className="bg-black p-4 rounded-lg shadow-glow-blue flex-grow min-h-0 border border-[#00d9ff]/20"
         style={{ minHeight: '45%' }}
       >
         <h3 className="text-xs font-medium text-[#00d9ff] uppercase tracking-wider mb-2">预警平台</h3>

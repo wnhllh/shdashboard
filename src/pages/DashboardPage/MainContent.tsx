@@ -73,7 +73,7 @@ const MainContent: React.FC<MainContentProps> = ({
   return (
     <section
       ref={globeContainerRef}
-      className="flex-grow basis-2/5 bg-black rounded-lg shadow-glow-blue relative overflow-hidden p-1"
+      className="flex-grow basis-2/5 bg-black rounded-lg shadow-glow-blue relative overflow-hidden p-1 border-2 border-[#00d9ff]/30 shadow-[0_0_20px_rgba(0,217,255,0.3)]"
     >
       {(finalArcsData.length > 0 || attackHotspots.length > 0) && dimensions.width > 0 && dimensions.height > 0 ? (
         <CyberGlobe
@@ -87,7 +87,7 @@ const MainContent: React.FC<MainContentProps> = ({
           {isLoading ? '加载地球数据...' : '地球数据不足或容器尺寸无效'}
         </div>
       )}
-      <div className="absolute bottom-2 left-2 right-2 h-1/4 flex space-x-2">
+      {/* <div className="absolute bottom-2 left-2 right-2 h-1/4 flex space-x-2">
         <div className="flex-[2] bg-black/80 rounded-md p-2 shadow-lg">
           {attackTrend.length > 0 ? (
             <AttackTrendChart
@@ -110,7 +110,7 @@ const MainContent: React.FC<MainContentProps> = ({
             <p className="text-slate-500 text-xs text-center">无攻击源数据</p>
           )}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

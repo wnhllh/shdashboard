@@ -131,7 +131,7 @@ interface AnimatedArcObject {
 
 // 引入 three.meshline 以支持兼容所有浏览器的粗飞线
 
-const GLOBE_RADIUS = 100; 
+const GLOBE_RADIUS = 150; 
 
 // Helper function to create a glowing sprite texture
 // const createGlowTexture = (color: string, intensityMultiplier: number = 1) => { /* Function body removed as it was unused and causing errors */ };

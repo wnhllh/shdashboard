@@ -17,7 +17,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInf
 
   return (
     <section
-      className="bg-black p-4 rounded-lg shadow-glow-blue overflow-y-auto flex flex-col space-y-3 shrink-0"
+      className="bg-black p-4 rounded-lg shadow-glow-blue overflow-y-auto flex flex-col space-y-3 shrink-0 border-2 border-[#00d9ff]/30 shadow-[0_0_20px_rgba(0,217,255,0.3)]"
       style={{ flexBasis: width, maxWidth: width, minWidth: width }}
     >
       {/* 邮件通知（已移除） */}

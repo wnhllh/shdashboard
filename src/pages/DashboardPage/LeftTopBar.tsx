@@ -167,7 +167,7 @@ const LeftTopBar: React.FC<LeftTopBarProps> = ({
   return (
     <section
       ref={sectionRef}
-      className="flex flex-col gap-3 shrink-0 bg-black p-4 rounded-lg shadow-glow-blue overflow-y-auto"
+      className="flex flex-col gap-3 shrink-0 bg-black p-4 rounded-lg shadow-glow-blue overflow-y-auto border-2 border-[#00d9ff]/30 shadow-[0_0_20px_rgba(0,217,255,0.3)]"
       style={{ flexBasis: width, maxWidth: width, minWidth: width }}
     >
       <div>
