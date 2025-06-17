@@ -17,7 +17,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInf
 
   return (
     <section
-      className="bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue overflow-y-auto flex flex-col space-y-3 shrink-0"
+      className="bg-black p-4 rounded-lg shadow-glow-blue overflow-y-auto flex flex-col space-y-3 shrink-0"
       style={{ flexBasis: width, maxWidth: width, minWidth: width }}
     >
       {/* 邮件通知（已移除） */}
@@ -32,19 +32,19 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInf
         </div>
         {overallStats ? (
           <ul className="space-y-2 text-xs pl-1 mt-2">
-             <li className="flex justify-between items-center p-1 hover:bg-[#152436]/50 rounded transition-colors">
+             <li className="flex justify-between items-center p-1 hover:bg-black/40 rounded transition-colors">
                 <span className="text-slate-300">总攻击:</span> 
                 <span className="font-medium text-[#ffb74d]">{overallStats.totalAttacks.toLocaleString()}</span>
             </li>
-            <li className="flex justify-between items-center p-1 hover:bg-[#152436]/50 rounded transition-colors">
+            <li className="flex justify-between items-center p-1 hover:bg-black/40 rounded transition-colors">
                 <span className="text-slate-300">国内攻击:</span> 
                 <span className="font-medium text-[#56ccf2]">{overallStats.domesticAttacks.toLocaleString()}</span>
             </li>
-            <li className="flex justify-between items-center p-1 hover:bg-[#152436]/50 rounded transition-colors">
+            <li className="flex justify-between items-center p-1 hover:bg-black/40 rounded transition-colors">
                 <span className="text-slate-300">国外攻击:</span> 
                 <span className="font-medium text-[#ff6d6d]">{overallStats.foreignAttacks.toLocaleString()}</span>
             </li>
-            <li className="flex justify-between items-center p-1 hover:bg-[#152436]/50 rounded transition-colors">
+            <li className="flex justify-between items-center p-1 hover:bg-black/40 rounded transition-colors">
                 <span className="text-slate-300">已阻断:</span> 
                 <span className="font-medium text-[#4ade80]">{overallStats.blockedAttacks.toLocaleString()}</span>
             </li>
@@ -54,7 +54,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInf
 
       {attackSourceInfo && (
         <div>
-          <div className="mb-2 backdrop-blur-[2px] bg-[#11224080] px-2 py-1 border-b border-[#00d9ff]/40 flex items-center">
+          <div className="mb-2 bg-black/80 px-2 py-1 border-b border-[#00d9ff]/40 flex items-center">
             <h3 className="text-xs font-medium text-[#00d9ff] uppercase tracking-wider">TOP 5 攻击源 IP</h3>
           </div>
             {attackSourceInfo.topSourceIPs.length > 0 ? (
@@ -75,7 +75,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInf
       </div>
 
       <div className="pt-2">
-        <div className="mb-2 backdrop-blur-[2px] bg-[#11224080] px-2 py-1 border-b border-[#00d9ff]/40">
+        <div className="mb-2 bg-black/80 px-2 py-1 border-b border-[#00d9ff]/40">
           <h3 className="text-xs font-medium text-[#00d9ff] uppercase tracking-wider">真实拦截率</h3>
         </div>
         <InterceptionRateChart />

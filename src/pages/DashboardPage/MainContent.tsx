@@ -71,7 +71,10 @@ const MainContent: React.FC<MainContentProps> = ({
   }, [dimensions.width, dimensions.height]); // Rerun only when dimensions change
 
   return (
-    <section ref={globeContainerRef} className="flex-grow basis-2/5 bg-slate-900 bg-opacity-40 backdrop-blur-md rounded-lg shadow-glow-blue relative overflow-hidden p-1">
+    <section
+      ref={globeContainerRef}
+      className="flex-grow basis-2/5 bg-black rounded-lg shadow-glow-blue relative overflow-hidden p-1"
+    >
       {(finalArcsData.length > 0 || attackHotspots.length > 0) && dimensions.width > 0 && dimensions.height > 0 ? (
         <CyberGlobe
           arcsData={finalArcsData}
@@ -85,7 +88,7 @@ const MainContent: React.FC<MainContentProps> = ({
         </div>
       )}
       <div className="absolute bottom-2 left-2 right-2 h-1/4 flex space-x-2">
-        <div className="flex-[2] bg-slate-900/50 backdrop-blur-sm rounded-md p-2 shadow-lg">
+        <div className="flex-[2] bg-black/80 rounded-md p-2 shadow-lg">
           {attackTrend.length > 0 ? (
             <AttackTrendChart
               data1={attackTrend}
@@ -97,7 +100,7 @@ const MainContent: React.FC<MainContentProps> = ({
             <p className="text-slate-500 text-xs text-center">无攻击趋势数据</p>
           )}
         </div>
-        <div className="flex-[3] bg-slate-900/50 backdrop-blur-sm rounded-md p-2 shadow-lg">
+        <div className="flex-[3] bg-black/80 rounded-md p-2 shadow-lg">
           {attackSourceInfo ? (
             <TopAttackSourcesChart
               domesticData={attackSourceInfo.topDomesticSources.map(s => ({ source: s.name, count: s.value }))}

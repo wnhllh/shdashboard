@@ -50,8 +50,8 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
       {/* 邮件通知 */}
       <EmailNotification />
       <div
-        className="bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue flex-grow min-h-0"
-        style={{ maxHeight: '49%', overflowY: 'auto' }}
+        className="bg-black p-4 rounded-lg shadow-glow-blue flex-grow min-h-0"
+        style={{ maxHeight: '100%', overflowY: 'auto' }}
       >
         <h2 className="text-base font-medium relative flex items-center mb-3">
           <span className="text-[#00d9ff] uppercase tracking-widest text-lg">S6000 网省联动</span>
@@ -65,24 +65,24 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
               }}
             >
               <style>{`
-                @keyframes infiniteScroll {
-                  ${(dashboardData.securityAlerts || []).map((_, index) => {
-                    const totalItems = dashboardData.securityAlerts?.length || 0;
+                  @keyframes infiniteScroll {
+                    ${(dashboardData.securityAlerts || []).map((_, index) => {
+                      const totalItems = dashboardData.securityAlerts?.length || 0;
                     const itemDuration = 100 / totalItems;
                     const stayPercent = itemDuration * 0.75;
-                    const startPercent = index * itemDuration;
-                    const stayEndPercent = startPercent + stayPercent;
-                    const endPercent = (index + 1) * itemDuration;
-                    const currentPosition = -index * 120;
-                    const nextPosition = -(index + 1) * 120;
-                    return `
-                      ${startPercent.toFixed(2)}% { transform: translateY(${currentPosition}px); }
-                      ${stayEndPercent.toFixed(2)}% { transform: translateY(${currentPosition}px); }
-                      ${endPercent.toFixed(2)}% { transform: translateY(${nextPosition}px); }
-                    `;
-                  }).join('')}
-                  100% { transform: translateY(-${(dashboardData.securityAlerts?.length || 0) * 120}px); }
-                }
+                      const startPercent = index * itemDuration;
+                      const stayEndPercent = startPercent + stayPercent;
+                      const endPercent = (index + 1) * itemDuration;
+                      const currentPosition = -index * 120;
+                      const nextPosition = -(index + 1) * 120;
+                      return `
+                        ${startPercent.toFixed(2)}% { transform: translateY(${currentPosition}px); }
+                        ${stayEndPercent.toFixed(2)}% { transform: translateY(${currentPosition}px); }
+                        ${endPercent.toFixed(2)}% { transform: translateY(${nextPosition}px); }
+                      `;
+                    }).join('')}
+                    100% { transform: translateY(-${(dashboardData.securityAlerts?.length || 0) * 120}px); }
+                  }
               `}</style>
               {/* 原始列表 */}
               {dashboardData.securityAlerts.map((alert) => {
@@ -143,13 +143,13 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
         ) : <p className="text-slate-500 text-xs pl-1">无安全预警</p>}
       </div>
       <div
-        className="bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue flex-grow min-h-0"
+        className="bg-black p-4 rounded-lg shadow-glow-blue flex-grow min-h-0"
         style={{ minHeight: '45%' }}
       >
         <h3 className="text-xs font-medium text-[#00d9ff] uppercase tracking-wider mb-2">预警平台</h3>
         {/* 选项卡切换 */}
         <div className="flex mb-3 relative">
-          <div className="flex bg-slate-800/50 rounded-lg p-1 relative">
+          <div className="flex bg-black/80 rounded-lg p-1 relative">
             <button
               onClick={() => setActiveTab('attack')}
               className={`px-3 py-1 text-xs font-medium rounded-md transition-colors duration-200 ${activeTab === 'attack' ? 'bg-[#00d9ff]/20 text-[#00d9ff] shadow-lg' : 'text-slate-400 hover:text-slate-300'}`}

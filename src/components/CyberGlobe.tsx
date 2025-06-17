@@ -765,36 +765,33 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
       const initialCurve = new THREE.CatmullRomCurve3(initialPoints);
       const tubeGeometry = new THREE.TubeGeometry(initialCurve, 8, 0.2, 6, false);
       
-      const tubeMaterial = new THREE.MeshBasicMaterial({
-        color: 0xff4444, // 明亮的红色，自发光
+      // 测试飞线部分也改为白色激光
+      const testTubeMaterial = new THREE.MeshBasicMaterial({
+        color: 0xffffff, // 纯白色
         transparent: true,
-        opacity: 0.9,
+        opacity: 1.0,
         side: THREE.DoubleSide
       });
-      
-      const tubeMesh = new THREE.Mesh(tubeGeometry, tubeMaterial);
-      
-      // 创建发光外壳
-      const glowGeometry = new THREE.TubeGeometry(initialCurve, 8, 0.36, 6, false);
-      const glowMaterial = new THREE.MeshBasicMaterial({
-        color: 0xff4444,
+      const testTubeMesh = new THREE.Mesh(tubeGeometry, testTubeMaterial);
+      const testGlowMaterial = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
         transparent: true,
-        opacity: 0.4, // 增加外壳透明度
+        opacity: 0.7,
         side: THREE.DoubleSide,
         blending: THREE.AdditiveBlending
       });
-      const glowMesh = new THREE.Mesh(glowGeometry, glowMaterial);
+      const testGlowMesh = new THREE.Mesh(tubeGeometry, testGlowMaterial);
       
-      customArcsRef.current.add(tubeMesh);
-      customArcsRef.current.add(glowMesh);
+      customArcsRef.current.add(testTubeMesh);
+      customArcsRef.current.add(testGlowMesh);
       console.log('[CyberGlobe Debug] Test tube arc with glow created and added');
       
       animatedArcsRef.current.push({
         curve: curve,
-        mesh: tubeMesh,
-        glowMesh: glowMesh,
-        material: tubeMaterial,
-        glowMaterial: glowMaterial,
+        mesh: testTubeMesh,
+        glowMesh: testGlowMesh,
+        material: testTubeMaterial,
+        glowMaterial: testGlowMaterial,
         numPoints: 50,
         startTime: Date.now(),
         animationDuration: 2000
@@ -824,31 +821,28 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
       const tubeGeometry = new THREE.TubeGeometry(initialCurve, 8, 0.16, 6, false);
       
       // 使用 MeshBasicMaterial 创建科幻效果
-      const baseColor = arc.color && typeof arc.color === 'string' ? arc.color : '#ff0000';
-      const color = new THREE.Color(baseColor);
-      
-      // 适度提高基础颜色亮度
-      color.multiplyScalar(1.1);
-      
-      // 创建强烈的发光颜色
-      const emissiveColor = new THREE.Color(baseColor);
-      emissiveColor.multiplyScalar(0.6);
-      
+      // const baseColor = arc.color && typeof arc.color === 'string' ? arc.color : '#ff0000';
+      // const color = new THREE.Color(baseColor);
+      // color.multiplyScalar(1.1);
+      // const emissiveColor = new THREE.Color(baseColor);
+      // emissiveColor.multiplyScalar(0.6);
+      // 白色激光风格
+      const color = new THREE.Color('#ffffff');
       const tubeMaterial = new THREE.MeshBasicMaterial({
-        color: color, // 自发光颜色
+        color: color, // 纯白色
         transparent: true,
-        opacity: 0.9,
+        opacity: 1.0, // 完全不透明
         side: THREE.DoubleSide
       });
 
       const tubeMesh = new THREE.Mesh(tubeGeometry, tubeMaterial);
       
-      // 创建发光外壳
-      const glowGeometry = new THREE.TubeGeometry(initialCurve, 8, 0.30, 6, false);
+      // 创建发光外壳（更亮更宽，白色）
+      const glowGeometry = new THREE.TubeGeometry(initialCurve, 8, 0.36, 6, false);
       const glowMaterial = new THREE.MeshBasicMaterial({
-        color: color,
+        color: color, // 纯白色
         transparent: true,
-        opacity: 0.35, // 增加外壳透明度
+        opacity: 0.7, // 更高透明度
         side: THREE.DoubleSide,
         blending: THREE.AdditiveBlending
       });
@@ -1290,10 +1284,10 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
 
     const now = Date.now();
     
-    const GROW_DURATION = 1000;    
-    const HOLD_DURATION = 1000;    
-    const SHRINK_DURATION = 1000;  
-    const PAUSE_DURATION = 1000;   
+    const GROW_DURATION = 500;    // 飞线生长更快
+    const HOLD_DURATION = 2200;   // 停留更久
+    const SHRINK_DURATION = 500;  // 收缩更快
+    const PAUSE_DURATION = 1000;  // 保持原样
     const TOTAL_CYCLE = GROW_DURATION + HOLD_DURATION + SHRINK_DURATION + PAUSE_DURATION; 
 
     animatedArcsRef.current.forEach((arcObj, index) => {

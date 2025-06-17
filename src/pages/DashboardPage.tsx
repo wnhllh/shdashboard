@@ -33,7 +33,7 @@ const DashboardPage = () => {
   }
 
   return (
-    <main className="flex-grow w-full flex items-stretch p-3 gap-3 overflow-hidden z-10">
+    <main className="flex-grow w-full flex items-stretch p-3 overflow-hidden z-10 bg-black">
       <LeftTopBar 
         width={LEFT_TOP_BAR_WIDTH}
         sankeyAttackedSystemsData={sankeyAttackedSystemsData}
