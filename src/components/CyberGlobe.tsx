@@ -765,16 +765,16 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
       const initialCurve = new THREE.CatmullRomCurve3(initialPoints);
       const tubeGeometry = new THREE.TubeGeometry(initialCurve, 8, 0.2, 6, false);
       
-      // 测试飞线部分也改为白色激光
+      // 测试飞线部分也改为红线+白光
       const testTubeMaterial = new THREE.MeshBasicMaterial({
-        color: 0xffffff, // 纯白色
+        color: 0xff2222, // 纯红色
         transparent: true,
         opacity: 1.0,
         side: THREE.DoubleSide
       });
       const testTubeMesh = new THREE.Mesh(tubeGeometry, testTubeMaterial);
       const testGlowMaterial = new THREE.MeshBasicMaterial({
-        color: 0xffffff,
+        color: 0xffffff, // 白色
         transparent: true,
         opacity: 0.7,
         side: THREE.DoubleSide,
@@ -820,16 +820,10 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
       const initialCurve = new THREE.CatmullRomCurve3(initialPoints);
       const tubeGeometry = new THREE.TubeGeometry(initialCurve, 8, 0.16, 6, false);
       
-      // 使用 MeshBasicMaterial 创建科幻效果
-      // const baseColor = arc.color && typeof arc.color === 'string' ? arc.color : '#ff0000';
-      // const color = new THREE.Color(baseColor);
-      // color.multiplyScalar(1.1);
-      // const emissiveColor = new THREE.Color(baseColor);
-      // emissiveColor.multiplyScalar(0.6);
-      // 白色激光风格
-      const color = new THREE.Color('#ffffff');
+      // 红色主线
+      const color = new THREE.Color('#ff2222');
       const tubeMaterial = new THREE.MeshBasicMaterial({
-        color: color, // 纯白色
+        color: color, // 纯红色
         transparent: true,
         opacity: 1.0, // 完全不透明
         side: THREE.DoubleSide
@@ -837,10 +831,10 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
 
       const tubeMesh = new THREE.Mesh(tubeGeometry, tubeMaterial);
       
-      // 创建发光外壳（更亮更宽，白色）
-      const glowGeometry = new THREE.TubeGeometry(initialCurve, 8, 0.36, 6, false);
+      // 创建发光外壳（白色，半径更大，发光更明显）
+      const glowGeometry = new THREE.TubeGeometry(initialCurve, 8, 0.42, 6, false); // 半径比主线大
       const glowMaterial = new THREE.MeshBasicMaterial({
-        color: color, // 纯白色
+        color: 0xffffff, // 白色
         transparent: true,
         opacity: 0.7, // 更高透明度
         side: THREE.DoubleSide,
