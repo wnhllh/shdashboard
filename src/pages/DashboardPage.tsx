@@ -4,7 +4,7 @@ import MainContent from './DashboardPage/MainContent';
 import RightSidebar from './DashboardPage/RightSidebar';
 import LeftTopBar from './DashboardPage/LeftTopBar';
 
-const LEFT_TOP_BAR_WIDTH = '14%';
+const LEFT_TOP_BAR_WIDTH = '16%';
 const LEFT_SIDEBAR_WIDTH = '16%';
 const RIGHT_SIDEBAR_WIDTH = '25%';
 

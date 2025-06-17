@@ -22,7 +22,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInf
     >
       {/* 邮件通知（已移除） */}
       <WafStatusRealtime />
-      <div>
+      {/* <div>
         <div className="mb-3 pb-1 group relative">
           <div className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#00d9ff] to-transparent bottom-0"></div>
           <h2 className="text-base font-medium relative flex items-center">
@@ -50,9 +50,9 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInf
             </li>
           </ul>
         ) : <p className="text-slate-500 text-xs">无总体数据</p>}
-      </div>
+      </div> */}
 
-      {attackSourceInfo && (
+      {/* {attackSourceInfo && (
         <div>
           <div className="mb-2 bg-black/80 px-2 py-1 border-b border-[#00d9ff]/40 flex items-center">
             <h3 className="text-xs font-medium text-[#00d9ff] uppercase tracking-wider">TOP 5 攻击源 IP</h3>
@@ -61,7 +61,7 @@ const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInf
               <SmartIPCards data={attackSourceInfo.topSourceIPs.map(item => ({...item}))} baseColor={techBlueMain} />
             ) : <p className="text-slate-500 text-xs">无IP源数据</p>}
         </div>
-      )}
+      )} */}
 
       <div className="pt-2">
         <div className="mb-3 pb-1 group relative">

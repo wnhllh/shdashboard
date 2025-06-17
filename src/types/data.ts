@@ -149,4 +149,21 @@ export interface SankeyData {
   nodes: SankeyNode[];
   links: SankeyLink[];
 }
+
+// 工作进度相关类型定义
+export interface WorkTask {
+  name: string;
+  progress: number;
+}
+
+export interface WorkProgressItem {
+  id: string;
+  title: string;
+  progress: number;
+  tasks: WorkTask[];
+}
+
+export interface WorkProgressData {
+  items: WorkProgressItem[];
+}
  
