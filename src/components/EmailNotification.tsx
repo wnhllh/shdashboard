@@ -90,7 +90,7 @@ const EmailNotification: React.FC<EmailNotificationProps> = ({
   const currentEmail = recentEmails[currentEmailIndex];
 
   return (
-    <div className="bg-slate-900/20 backdrop-blur-md rounded-xl border border-cyan-400/20 overflow-hidden shadow-lg shadow-cyan-400/10">
+    <div className="relative w-full">
       {/* 头部区域 */}
       <div className="p-4 bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-purple-500/5 border-b border-cyan-400/10">
         <div className="flex items-center justify-between mb-3">

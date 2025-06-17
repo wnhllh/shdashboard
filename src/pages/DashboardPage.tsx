@@ -2,6 +2,11 @@ import { useDashboardData } from '@/hooks/useDashboardData';
 import LeftSidebar from './DashboardPage/LeftSidebar';
 import MainContent from './DashboardPage/MainContent';
 import RightSidebar from './DashboardPage/RightSidebar';
+import LeftTopBar from './DashboardPage/LeftTopBar';
+
+const LEFT_TOP_BAR_WIDTH = '14%';
+const LEFT_SIDEBAR_WIDTH = '16%';
+const RIGHT_SIDEBAR_WIDTH = '25%';
 
 const DashboardPage = () => {
   const { 
@@ -29,10 +34,15 @@ const DashboardPage = () => {
 
   return (
     <main className="flex-grow w-full flex items-stretch p-3 gap-3 overflow-hidden z-10">
+      <LeftTopBar 
+        width={LEFT_TOP_BAR_WIDTH}
+        sankeyAttackedSystemsData={sankeyAttackedSystemsData}
+        attackTypeDistribution={attackTypeDistribution}
+      />
       <LeftSidebar 
+        width={LEFT_SIDEBAR_WIDTH}
         overallStats={overallStats}
         attackSourceInfo={attackSourceInfo}
-        firewalls={firewalls}
       />
       <MainContent 
         isLoading={isLoading}
@@ -42,8 +52,7 @@ const DashboardPage = () => {
         attackSourceInfo={attackSourceInfo}
       />
       <RightSidebar 
-        sankeyAttackedSystemsData={sankeyAttackedSystemsData}
-        attackTypeDistribution={attackTypeDistribution}
+        width={RIGHT_SIDEBAR_WIDTH}
         dashboardData={dashboardData}
         highRiskEvents={highRiskEvents}
       />

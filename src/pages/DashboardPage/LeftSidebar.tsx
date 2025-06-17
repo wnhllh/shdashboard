@@ -1,6 +1,6 @@
 import React from 'react';
 import type { OverallStats, AttackSourceInfo } from '@/types/data';
-import EmailNotification from '@/components/EmailNotification';
+// import EmailNotification from '@/components/EmailNotification';
 import WafStatusRealtime from '@/components/WafStatusRealtime';
 import SmartIPCards from '@/components/charts/SmartIPCards';
 import InterceptionRateChart from '@/components/charts/InterceptionRateChart';
@@ -9,14 +9,18 @@ import DDoSMonitoringCharts from '@/components/charts/DDoSMonitoringCharts';
 interface LeftSidebarProps {
   overallStats: OverallStats | null;
   attackSourceInfo: AttackSourceInfo | null;
+  width: string;
 }
 
-const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInfo }) => {
+const LeftSidebar: React.FC<LeftSidebarProps> = ({ overallStats, attackSourceInfo, width }) => {
   const techBlueMain = '#00d9ff';
 
   return (
-    <section className="basis-1/5 bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue overflow-y-auto flex flex-col space-y-3 shrink-0">
-      <EmailNotification />
+    <section
+      className="bg-slate-900 bg-opacity-40 backdrop-blur-md p-4 rounded-lg shadow-glow-blue overflow-y-auto flex flex-col space-y-3 shrink-0"
+      style={{ flexBasis: width, maxWidth: width, minWidth: width }}
+    >
+      {/* 邮件通知（已移除） */}
       <WafStatusRealtime />
       <div>
         <div className="mb-3 pb-1 group relative">
