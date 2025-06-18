@@ -36,8 +36,14 @@ const D3SankeyAttackedSystemsChart: React.FC<D3SankeyChartProps> = ({
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   const colorPalette = useMemo(() => [
-    '#00f7ff', '#00b8ff', '#00d9ff', '#0088ff',
-    '#41ffd2', '#33ccff', '#4dbeff', '#4966f5'
+    '#00FFFF', // 纯青色 - 极亮
+    '#00FF00', // 纯绿色 - 极亮
+    '#FFFF00', // 纯黄色 - 极亮
+    '#FF00FF', // 纯品红 - 极亮
+    '#FFFFFF', // 纯白色 - 最亮
+    '#80FF80', // 亮绿色 - 高亮
+    '#80FFFF', // 亮青色 - 高亮
+    '#FFFF80'  // 亮黄色 - 高亮
   ], []);
 
   const colorScale = useMemo(() => d3.scaleOrdinal(colorPalette), [colorPalette]);
@@ -109,7 +115,7 @@ const D3SankeyAttackedSystemsChart: React.FC<D3SankeyChartProps> = ({
         .attr('stroke', (_d: ProcessedLink, i: number) => `url(#link-gradient-${idSuffix}-${i})`) // _d as it's not used directly here
         .attr('stroke-width', (d: ProcessedLink) => Math.max(1, d.width || 0))
         .style('fill', 'none')
-        .style('opacity', 0.6)
+        .style('opacity', 0.9)
         .style('transition', 'opacity 0.3s ease')
       .on('mouseover', function (this: SVGPathElement, _event: MouseEvent, d_event: ProcessedLink) {
         d3.select(this).style('opacity', 0.9);
@@ -145,8 +151,8 @@ const D3SankeyAttackedSystemsChart: React.FC<D3SankeyChartProps> = ({
       .attr('width', (d: ProcessedNode) => (d.x1 || 0) - (d.x0 || 0)) // Use d.x1 and d.x0 for width
       .attr('fill', (d: ProcessedNode) => colorScale(d.nodeId))
       .attr('stroke', (d: ProcessedNode) => d3.rgb(colorScale(d.nodeId)).darker(0.5).toString())
-      .style('opacity', 0.9)
-      .style('stroke-width', 1.5)
+      .style('opacity', 1)
+      .style('stroke-width', 2)
       .style('transition', 'opacity 0.3s ease, fill 0.3s ease')
     .on('mouseover', function (this: SVGRectElement, _event: MouseEvent, d_event: ProcessedNode) {
         d3.select(this).style('opacity', 1).attr('fill', d3.rgb(colorScale(d_event.nodeId)).brighter(0.7).toString());

@@ -201,28 +201,23 @@ const DDoSMonitoringCharts: React.FC = () => {
     // 创建渐变
     const defs = svg.append('defs');
     
-    // 直接使用纯色，不用渐变
-    // Incoming - 黄橙色（纯色）
-    // Passed - 绿色（纯色）  
-    // Dropped - 红色（纯色）
-
-    // 绘制区域 - 使用纯色填充
+    // 绘制区域 - 使用最锐利的纯色
     g.append('path')
       .datum(trafficData)
-      .attr('fill', '#ffb74d')
-      .attr('fill-opacity', 0.8)
+      .attr('fill', '#FFFF00') // 纯黄色 - 最大对比度
+      .attr('fill-opacity', 1) // 完全不透明
       .attr('d', areaIncoming);
 
     g.append('path')
       .datum(trafficData)
-      .attr('fill', '#81c784')
-      .attr('fill-opacity', 0.7)
+      .attr('fill', '#00FF00') // 纯绿色 - 最大饱和度
+      .attr('fill-opacity', 0.9)
       .attr('d', areaPassed);
 
     g.append('path')
       .datum(trafficData)
-      .attr('fill', '#e57373')
-      .attr('fill-opacity', 0.8)
+      .attr('fill', '#FF0000') // 纯红色 - 最大饱和度
+      .attr('fill-opacity', 1)
       .attr('d', areaDropped);
 
     // 添加中心基线
@@ -314,28 +309,28 @@ const DDoSMonitoringCharts: React.FC = () => {
     feMerge.append('feMergeNode').attr('in', 'coloredBlur');
     feMerge.append('feMergeNode').attr('in', 'SourceGraphic');
 
-    // 绘制线条
+    // 绘制线条 - 使用最锐利的纯色
     g.append('path')
       .datum(attackData)
       .attr('fill', 'none')
-      .attr('stroke', '#f48fb1') // SYN Flood - 粉红色
-      .attr('stroke-width', 1.5)
+      .attr('stroke', '#FF00FF') // 纯品红 - SYN Flood 最高对比度
+      .attr('stroke-width', 3) // 增加线条宽度
       .attr('filter', 'url(#glow)')
       .attr('d', synFloodLine);
 
     g.append('path')
       .datum(attackData)
       .attr('fill', 'none')
-      .attr('stroke', '#81c784') // TCP Misuse - 绿色
-      .attr('stroke-width', 1.5)
+      .attr('stroke', '#00FF00') // 纯绿色 - TCP Misuse 最大饱和度
+      .attr('stroke-width', 3)
       .attr('filter', 'url(#glow)')
       .attr('d', tcpMisuseLine);
 
     g.append('path')
       .datum(attackData)
       .attr('fill', 'none')
-      .attr('stroke', '#64b5f6') // Manual Strategy - 蓝色
-      .attr('stroke-width', 1.5)
+      .attr('stroke', '#00FFFF') // 纯青色 - Manual Strategy 极高对比度
+      .attr('stroke-width', 3)
       .attr('filter', 'url(#glow)')
       .attr('d', manualStrategyLine);
 
@@ -387,22 +382,22 @@ const DDoSMonitoringCharts: React.FC = () => {
         <div className="flex justify-between items-center mt-1">
           <div className="flex items-center space-x-3 text-[9px]">
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-yellow-500 mr-1 rounded-sm"></div>
+              <div className="w-2 h-2 bg-yellow-400 mr-1 rounded-sm"></div>
               <span className="text-slate-400">Incoming</span>
             </div>
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-green-500 mr-1 rounded-sm"></div>
+              <div className="w-2 h-2 mr-1 rounded-sm" style={{ backgroundColor: '#00FF00' }}></div>
               <span className="text-slate-400">Passed</span>
             </div>
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-red-500 mr-1 rounded-sm"></div>
+              <div className="w-2 h-2 mr-1 rounded-sm" style={{ backgroundColor: '#FF0000' }}></div>
               <span className="text-slate-400">Dropped</span>
             </div>
           </div>
           <div className="flex space-x-2 text-[10px] font-mono">
-            <span className="text-yellow-400">{latestTraffic ? formatValue(latestTraffic.incoming) : '2.5M'}</span>
-            <span className="text-green-400">{latestTraffic ? formatValue(latestTraffic.passed) : '2.5M'}</span>
-            <span className="text-red-400">{latestTraffic ? formatValue(latestTraffic.dropped) : '13.6K'}</span>
+            <span className="text-yellow-300">{latestTraffic ? formatValue(latestTraffic.incoming) : '2.5M'}</span>
+            <span style={{ color: '#00FF00' }}>{latestTraffic ? formatValue(latestTraffic.passed) : '2.5M'}</span>
+            <span style={{ color: '#FF0000' }}>{latestTraffic ? formatValue(latestTraffic.dropped) : '13.6K'}</span>
           </div>
         </div>
       </div>
@@ -422,22 +417,22 @@ const DDoSMonitoringCharts: React.FC = () => {
         <div className="flex justify-between items-center mt-1">
           <div className="flex items-center space-x-3 text-[9px]">
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-pink-400 mr-1 rounded-sm"></div>
+              <div className="w-2 h-2 mr-1 rounded-sm" style={{ backgroundColor: '#FF00FF' }}></div>
               <span className="text-slate-400">SYN Flood</span>
             </div>
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-green-400 mr-1 rounded-sm"></div>
+              <div className="w-2 h-2 mr-1 rounded-sm" style={{ backgroundColor: '#00FF00' }}></div>
               <span className="text-slate-400">TCP Misuse</span>
             </div>
             <div className="flex items-center">
-              <div className="w-2 h-2 bg-blue-400 mr-1 rounded-sm"></div>
+              <div className="w-2 h-2 mr-1 rounded-sm" style={{ backgroundColor: '#00FFFF' }}></div>
               <span className="text-slate-400">Manual Strategy</span>
             </div>
           </div>
           <div className="flex space-x-2 text-[10px] font-mono">
-            <span className="text-pink-400">{latestAttack ? formatValue(latestAttack.synFlood) : '8.8K'}</span>
-            <span className="text-green-400">{latestAttack ? formatValue(latestAttack.tcpMisuse) : '0'}</span>
-            <span className="text-blue-400">{latestAttack ? formatValue(latestAttack.manualStrategy) : '4.8K'}</span>
+            <span style={{ color: '#FF00FF' }}>{latestAttack ? formatValue(latestAttack.synFlood) : '8.8K'}</span>
+            <span style={{ color: '#00FF00' }}>{latestAttack ? formatValue(latestAttack.tcpMisuse) : '0'}</span>
+            <span style={{ color: '#00FFFF' }}>{latestAttack ? formatValue(latestAttack.manualStrategy) : '4.8K'}</span>
           </div>
         </div>
       </div>
@@ -483,13 +478,18 @@ const DDoSMonitoringCharts: React.FC = () => {
                       className={`absolute bottom-0 left-0 w-full transition-all duration-1000 ${
                         device.status === 'offline' 
                           ? 'bg-red-500/50' 
-                          : loadPercentage > 80 
-                            ? 'bg-red-500' 
-                            : loadPercentage > 60 
-                              ? 'bg-yellow-500' 
-                              : 'bg-green-500'
+                          : ''
                       }`}
-                      style={{ height: `${device.status === 'offline' ? 10 : loadPercentage}%` }}
+                      style={{ 
+                        height: `${device.status === 'offline' ? 10 : loadPercentage}%`,
+                        backgroundColor: device.status === 'offline' 
+                          ? '#FF0040' 
+                          : loadPercentage > 80 
+                            ? '#FF0040'  // 鲜红色 - 危险
+                            : loadPercentage > 60 
+                              ? '#FFFF00'  // 纯黄色 - 警告
+                              : '#00FF80'  // 春绿色 - 正常
+                      }}
                     ></div>
                   </div>
                 </div>
@@ -504,19 +504,19 @@ const DDoSMonitoringCharts: React.FC = () => {
                 {/* 数据列表 */}
                 <div className="space-y-0.5 text-[6px]">
                   <div className="text-center">
-                    <span className="text-blue-400 font-mono">{device.connections}</span>
+                    <span className="font-mono" style={{ color: '#00E5FF' }}>{device.connections}</span>
                     <div className="text-slate-500">连接</div>
                   </div>
                   <div className="text-center">
-                    <span className="text-cyan-400 font-mono">{device.sessions}</span>
+                    <span className="font-mono" style={{ color: '#00FFFF' }}>{device.sessions}</span>
                     <div className="text-slate-500">会话</div>
                   </div>
                   <div className="text-center">
-                    <span className="text-green-400 font-mono">{device.bandwidth}</span>
+                    <span className="font-mono" style={{ color: '#00FF80' }}>{device.bandwidth}</span>
                     <div className="text-slate-500">带宽</div>
                   </div>
                   <div className="text-center">
-                    <span className="text-yellow-400 font-mono">{device.throughput}</span>
+                    <span className="font-mono" style={{ color: '#FFFF00' }}>{device.throughput}</span>
                     <div className="text-slate-500">吞吐</div>
                   </div>
                 </div>
@@ -528,15 +528,15 @@ const DDoSMonitoringCharts: React.FC = () => {
         {/* 状态图例 */}
         <div className="flex justify-center items-center mt-3 space-x-4 text-[8px] border-t border-slate-700/30 pt-2">
           <div className="flex items-center">
-            <div className="w-2 h-2 bg-green-500 rounded-sm mr-1"></div>
+            <div className="w-2 h-2 rounded-sm mr-1" style={{ backgroundColor: '#00FF00' }}></div>
             <span className="text-slate-400">正常 (&lt;60%)</span>
           </div>
           <div className="flex items-center">
-            <div className="w-2 h-2 bg-yellow-500 rounded-sm mr-1"></div>
+            <div className="w-2 h-2 rounded-sm mr-1" style={{ backgroundColor: '#FFFF00' }}></div>
             <span className="text-slate-400">警告 (60-80%)</span>
           </div>
           <div className="flex items-center">
-            <div className="w-2 h-2 bg-red-500 rounded-sm mr-1"></div>
+            <div className="w-2 h-2 rounded-sm mr-1" style={{ backgroundColor: '#FF0000' }}></div>
             <span className="text-slate-400">危险 (&gt;80%)</span>
           </div>
         </div>

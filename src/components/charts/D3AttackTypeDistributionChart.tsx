@@ -39,14 +39,14 @@ const D3AttackTypeDistributionChart: React.FC<D3PieChartProps> = ({
   }, [data]);
 
   const colorPalette = useMemo(() => [
-    '#00f7ff', // 亮蓝色
-    '#00b8ff',
-    '#00d9ff', // 青蓝色
-    '#0088ff', // 深蓝色
-    '#41ffd2', // 青绿色
-    '#33ccff', // 浅蓝色
-    '#4dbeff', // 中蓝色
-    '#4966f5'  // 绿蓝色
+    '#00FFFF', // 纯青色 - 极亮
+    '#00FF00', // 纯绿色 - 极亮
+    '#FFFF00', // 纯黄色 - 极亮
+    '#FF00FF', // 纯品红 - 极亮
+    '#FFFFFF', // 纯白色 - 最亮
+    '#80FF80', // 亮绿色 - 高亮
+    '#80FFFF', // 亮青色 - 高亮
+    '#FFFF80'  // 亮黄色 - 高亮
   ], []);
 
   const colorScale = useCallback((i: number) => colorPalette[i % colorPalette.length], [colorPalette]);
@@ -91,10 +91,10 @@ const D3AttackTypeDistributionChart: React.FC<D3PieChartProps> = ({
         .attr('cx', '50%').attr('cy', '50%')
         .attr('r', '70%').attr('fx', '50%').attr('fy', '50%');
       
-      // Adjusted gradient stops for a flatter, less 'jelly' appearance
-      grad.append('stop').attr('offset', '0%').style('stop-color', baseColor.brighter(0.3).toString()).style('stop-opacity', 0.95);
-      grad.append('stop').attr('offset', '50%').style('stop-color', baseColor.toString()).style('stop-opacity', 1);
-      grad.append('stop').attr('offset', '100%').style('stop-color', baseColor.darker(0.5).toString()).style('stop-opacity', 1);
+      // 使用更锐利的渐变，减少明暗差异
+      grad.append('stop').attr('offset', '0%').style('stop-color', baseColor.toString()).style('stop-opacity', 1);
+      grad.append('stop').attr('offset', '70%').style('stop-color', baseColor.toString()).style('stop-opacity', 1);
+      grad.append('stop').attr('offset', '100%').style('stop-color', baseColor.darker(0.2).toString()).style('stop-opacity', 1);
     });
 
     const pie = d3.pie<ChartDataItem>()
@@ -128,8 +128,8 @@ const D3AttackTypeDistributionChart: React.FC<D3PieChartProps> = ({
       .attr('d', arcGenerator)
       .attr('fill', (_d, i) => `url(#pie-gradient-${idSuffix}-${i})`)
       .style('stroke', (_d, i) => colorScale(i))
-      .style('stroke-width', 2)
-      .style('opacity', 0.5)
+      .style('stroke-width', 3)
+      .style('opacity', 1)
       .style('transition', 'opacity 0.3s ease, transform 0.3s ease, stroke-width 0.3s ease');
 
     path.transition()
@@ -166,8 +166,8 @@ const D3AttackTypeDistributionChart: React.FC<D3PieChartProps> = ({
       d3.select(this)
         .transition().duration(150)
         .attr('d', highlightArcGenerator(d_event) || '')
-        .style('opacity', 0.85)
-        .style('stroke-width', 3);
+        .style('opacity', 1)
+        .style('stroke-width', 4);
         
       d3.select(centerTextNameRef.current).text(d_event.data.name)
         .transition().duration(150)
@@ -192,8 +192,8 @@ const D3AttackTypeDistributionChart: React.FC<D3PieChartProps> = ({
       d3.select(this)
         .transition().duration(250)
         .attr('d', arcGenerator(d_event) || '')
-        .style('opacity', 0.5)
-        .style('stroke-width', 2);
+        .style('opacity', 0.9)
+        .style('stroke-width', 3);
         
       d3.select(centerTextNameRef.current).transition().duration(150).style('opacity', 0);
       d3.select(centerTextPercentageRef.current).transition().duration(150).style('opacity', 0);

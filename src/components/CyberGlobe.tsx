@@ -1139,27 +1139,27 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
       const markerGroup = new THREE.Group();
       const position = latLngToVector3(aggPoint.lat, aggPoint.lng, GLOBE_RADIUS);
       
-      let pillarBaseRadius = Math.max(0.2, 0.1 + (aggPoint.aggregatedValue / maxAggregatedVal) * 1.5);
-      // Make it thicker based on count of original points in the aggregation
-      const thicknessMultiplier = 1 + Math.log10(Math.max(1, aggPoint.count)) * 0.5; // Log scale for thickness, ensure count >= 1 for log. Tunable factor 0.5.
-      pillarBaseRadius *= thicknessMultiplier;
+      // 底座热力图的半径 - 保持粗的效果
+      let heatmapBaseRadius = Math.max(0.3, 0.2 + (aggPoint.aggregatedValue / maxAggregatedVal) * 2.0);
+      // 基于聚合点数量增加厚度
+      const thicknessMultiplier = 1 + Math.log10(Math.max(1, aggPoint.count)) * 0.8; 
+      heatmapBaseRadius *= thicknessMultiplier;
 
-      // const spikeHeight = 4 + (aggPoint.aggregatedValue / maxAggregatedVal) * 25; // Replaced by pillarHeight
+      // 光柱半径 - 稍微粗一点的线状
+      const pillarBaseRadius = 0.3; // 稍微粗一点的基础半径
+      const pillarTopRadius = 0.15; // 顶部也相应调整
       
       const direction = position.clone().normalize();
 
-      const currentIntensity = aggPoint.aggregatedValue / maxAggregatedVal; // Normalized 0-1 based on aggregated values
-      const pillarHeight = 4 + currentIntensity * 25; // Actual height in 3D units for the main pillar
+      const currentIntensity = aggPoint.aggregatedValue / maxAggregatedVal;
+      const pillarHeight = 4 + currentIntensity * 25;
 
-      // --- 1. 三维曲线圆锥热力图 (Heatmap Cone visual element) ---
-      // These dimensions are for the separate heatmap cone visual, using currentIntensity
-      const actualHeatmapConeRadius = 0.3 + currentIntensity * 2;
-      const actualHeatmapConeHeight = 0.5 + currentIntensity * 3;
-      const heatmapConeGeometry = createCurvedConeGeometry(actualHeatmapConeRadius, 0.1, actualHeatmapConeHeight, 12, 20);
+      // --- 1. 底座热力图圆锥 (粗的底座，像热力图) ---
+      const actualHeatmapConeHeight = 0.8 + currentIntensity * 2; // 稍微高一点
+      const heatmapConeGeometry = createCurvedConeGeometry(heatmapBaseRadius, heatmapBaseRadius * 0.3, actualHeatmapConeHeight, 12, 20);
       
-      // 使用渐变材质，营造从底部红色到顶部白色的效果
       const heatmapConeMaterial = new THREE.MeshBasicMaterial({
-        color: 0xff3333, // 主体红色
+        color: 0xff3333, 
         transparent: true,
         opacity: 0.6 + currentIntensity * 0.3,
         blending: THREE.AdditiveBlending,
@@ -1167,46 +1167,42 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
       });
 
       const heatmapCone = new THREE.Mesh(heatmapConeGeometry, heatmapConeMaterial);
-      // 放置圆锥使其底部贴近地球表面，顶部指向光柱
       heatmapCone.position.copy(position).add(direction.clone().multiplyScalar(actualHeatmapConeHeight / 2));
       heatmapCone.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction);
       markerGroup.add(heatmapCone);
 
-      // --- 2. 创建攻击光柱（与圆锥顶部连接）---
-      // pillarBaseRadius is already defined and scaled by aggPoint.count
-      // pillarHeight is defined based on currentIntensity
-      const topBeamRadius = pillarBaseRadius * 0.5; // Top of the pillar is thinner
-      
-      // Determine color based on intensity
+      // --- 2. 细线状光柱 ---
       const isHighIntensity = currentIntensity > 0.8;
       const coreColor = isHighIntensity ? 0xffffff : 0xff3333;
       
-      // Core light pillar
-      const coreBeamGeometry = new THREE.CylinderGeometry(topBeamRadius, pillarBaseRadius, pillarHeight, 8);
+      // 主光柱 - 很细的线
+      const coreBeamGeometry = new THREE.CylinderGeometry(pillarTopRadius, pillarBaseRadius, pillarHeight, 6);
       const coreBeamMaterial = new THREE.MeshBasicMaterial({
         color: coreColor,
         transparent: true,
-        opacity: 0.8 + currentIntensity * 0.2,
+        opacity: 0.9 + currentIntensity * 0.1,
         blending: THREE.AdditiveBlending
       });
       const coreBeam = new THREE.Mesh(coreBeamGeometry, coreBeamMaterial);
       
-      coreBeam.position.copy(position).add(direction.clone().multiplyScalar(pillarHeight / 2));
+      // 从热力图顶部开始
+      const startHeight = actualHeatmapConeHeight;
+      coreBeam.position.copy(position).add(direction.clone().multiplyScalar(startHeight + pillarHeight / 2));
       coreBeam.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction);
       markerGroup.add(coreBeam);
       
-      // Outer glow for the pillar
-      const outerBeamRadius = pillarBaseRadius * 1.8;
-      const outerTopRadius = outerBeamRadius * 0.6;
-      const outerBeamGeometry = new THREE.CylinderGeometry(outerTopRadius, outerBeamRadius, pillarHeight * 0.98, 8);
+      // 线状光柱的发光效果 - 与新的线条粗细协调
+      const outerBeamRadius = pillarBaseRadius * 2.5; // 外层发光比例调整
+      const outerTopRadius = pillarTopRadius * 2;
+      const outerBeamGeometry = new THREE.CylinderGeometry(outerTopRadius, outerBeamRadius, pillarHeight * 0.98, 6);
       
       let outerColor, outerOpacity;
       if (isHighIntensity) {
         outerColor = 0xaaccff;
-        outerOpacity = 0.3 + currentIntensity * 0.2;
+        outerOpacity = 0.2 + currentIntensity * 0.15;
       } else {
         outerColor = 0xff1111;
-        outerOpacity = 0.4 + currentIntensity * 0.3;
+        outerOpacity = 0.25 + currentIntensity * 0.2;
       }
       
       const outerBeamMaterial = new THREE.MeshBasicMaterial({
@@ -1220,17 +1216,17 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
       outerBeam.quaternion.copy(coreBeam.quaternion);
       markerGroup.add(outerBeam);
       
-      // Extra bright glow for very high intensity attacks
+      // 高强度攻击的额外发光效果
       if (currentIntensity > 0.7) {
-        const glowRadius = outerBeamRadius * 1.2;
-        const glowTopRadius = glowRadius * 0.8;
-        const glowHeight = pillarHeight * 0.8; // Relative to the main pillar height
+        const glowRadius = outerBeamRadius * 1.5; // 仍然保持细线状
+        const glowTopRadius = outerTopRadius * 1.5;
+        const glowHeight = pillarHeight * 0.8;
         
-        const extraGlowGeometry = new THREE.CylinderGeometry(glowTopRadius, glowRadius, glowHeight, 8);
+        const extraGlowGeometry = new THREE.CylinderGeometry(glowTopRadius, glowRadius, glowHeight, 6);
         const extraGlowMaterial = new THREE.MeshBasicMaterial({
           color: 0xffffff,
           transparent: true,
-          opacity: (currentIntensity - 0.7) * 0.3,
+          opacity: (currentIntensity - 0.7) * 0.2,
           blending: THREE.AdditiveBlending
         });
         const extraGlow = new THREE.Mesh(extraGlowGeometry, extraGlowMaterial);
@@ -1239,8 +1235,8 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
         markerGroup.add(extraGlow);
       }
       
-      // Top sphere glow
-      const topGlowRadius = 0.2 + currentIntensity * 0.15;
+      // 顶部光球 - 稍微小一点
+      const topGlowRadius = 0.1 + currentIntensity * 0.08;
       const topGlowGeometry = new THREE.SphereGeometry(topGlowRadius, 8, 8);
       const topGlowMaterial = new THREE.MeshBasicMaterial({
         color: 0xffffff,
@@ -1249,7 +1245,7 @@ const CyberGlobe: React.FC<CyberGlobeProps> = ({ arcsData, pointsData, width = 8
         blending: THREE.AdditiveBlending
       });
       const topGlow = new THREE.Mesh(topGlowGeometry, topGlowMaterial);
-      topGlow.position.copy(position).add(direction.clone().multiplyScalar(pillarHeight)); // Positioned at the top of the pillarHeight
+      topGlow.position.copy(position).add(direction.clone().multiplyScalar(startHeight + pillarHeight));
       markerGroup.add(topGlow);
       
       attackHotspotsGroupRef.current.add(markerGroup);
