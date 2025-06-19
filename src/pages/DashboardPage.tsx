@@ -1,8 +1,11 @@
+import React from 'react';
 import { useDashboardData } from '@/hooks/useDashboardData';
 import LeftSidebar from './DashboardPage/LeftSidebar';
 import MainContent from './DashboardPage/MainContent';
 import RightSidebar from './DashboardPage/RightSidebar';
 import LeftTopBar from './DashboardPage/LeftTopBar';
+import { useMemo } from 'react';
+import type { HighRiskEvent, HostSecurityEvent } from '@/types/data';
 
 const LEFT_TOP_BAR_WIDTH = '16%';
 const LEFT_SIDEBAR_WIDTH = '16%';
@@ -22,7 +25,17 @@ const DashboardPage = () => {
     attackHotspots,
     firewalls,
     highRiskEvents,
+    hostSecurityEvents,
   } = useDashboardData();
+
+  const combinedEvents = useMemo(() => {
+    const mappedHostEvents: HighRiskEvent[] = (hostSecurityEvents || []).map(event => ({
+      ...event,
+      src_ip: 'N/A', // 主机安全事件通常没有源IP,用 N/A 占位
+      dst_ip: event.dst_ip,
+    }));
+    return [...(highRiskEvents || []), ...mappedHostEvents];
+  }, [highRiskEvents, hostSecurityEvents]);
 
   if (isLoading) {
     return <div className="w-full h-full flex items-center justify-center text-2xl text-slate-400">加载中...</div>;
@@ -54,7 +67,7 @@ const DashboardPage = () => {
       <RightSidebar 
         width={RIGHT_SIDEBAR_WIDTH}
         dashboardData={dashboardData}
-        highRiskEvents={highRiskEvents}
+        highRiskEvents={combinedEvents}
       />
     </main>
   );

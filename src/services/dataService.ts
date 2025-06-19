@@ -9,7 +9,8 @@ import {
   AttackSourceInfo,
   AttackTypeDistribution,
   HistoricalTrend,
-  HighRiskEvent
+  HighRiskEvent,
+  HostSecurityEvent
 } from '@/types/data';
 import CacheService from './cacheService';
 
@@ -386,42 +387,58 @@ export interface AttackHotspot {
 }
 
 export function getAttackHotspotsData(realtimeAttacks: RealtimeAttack[]): AttackHotspot[] {
-  if (!realtimeAttacks || realtimeAttacks.length === 0) {
-    return [];
-  }
-  const hotspotCounts: { [key: string]: AttackHotspot } = {};
+  const hotspotMap: { [key: string]: AttackHotspot } = {};
+
   realtimeAttacks.forEach(attack => {
-    const location = attack.source_location as any;
-    if (!location || location.lat === undefined || location.lng === undefined || !location.country) {
-        return;
+    if (typeof attack.source_location === 'object' && attack.source_location) {
+      const location = attack.source_location;
+      const key = `${location.lat},${location.lng}`;
+      if (hotspotMap[key]) {
+        hotspotMap[key].value += 1;
+      } else {
+        hotspotMap[key] = {
+          lat: location.lat,
+          lng: location.lng,
+          country: location.country || '未知',
+          city: location.city || '未知',
+          value: 1,
+        };
+      }
     }
-    const key = `${location.lat},${location.lng}`;
-    if (!hotspotCounts[key]) {
-      hotspotCounts[key] = {
-        lat: location.lat,
-        lng: location.lng,
-        country: location.country,
-        city: location.city,
-        value: 0,
-      };
-    }
-    hotspotCounts[key].value += 1;
   });
-  return Object.values(hotspotCounts);
+  return Object.values(hotspotMap);
 }
 
 // Data transformation function for high risk events
 export function transformHighRiskEvents(apiData: any[]): HighRiskEvent[] {
   if (!Array.isArray(apiData)) {
-    console.warn('transformHighRiskEvents: Expected array but received:', typeof apiData, apiData);
+    console.error('transformHighRiskEvents expected an array, but received:', apiData);
     return [];
   }
-  
   return apiData.map(item => ({
-    src_ip: item.src_ip || '',
-    dst_ip: item.dst_ip || '',
-    alert_type: item.alert_type || '',
-    alert_level: item.alert_level || '低',
-    attack_status: item.attack_status || '未知'
+    id: item.id,
+    request_id: item.request_id,
+    alert_time: item.alert_time,
+    src_ip: item.src_ip,
+    dst_ip: item.dst_ip,
+    alert_type: item.alert_type,
+    alert_level: item.alert_level,
+    attack_status: item.attack_status,
+  }));
+}
+
+export function transformHostSecurityEvents(apiData: any[]): HostSecurityEvent[] {
+  if (!Array.isArray(apiData)) {
+    console.error('transformHostSecurityEvents expected an array, but received:', apiData);
+    return [];
+  }
+  return apiData.map(item => ({
+    id: item.id,
+    alert_time: item.alert_time,
+    dst_ip: item.dst_ip,
+    alert_type: item.alert_type,
+    alert_level: item.alert_level,
+    attack_status: item.attack_status,
+    log_content: item.log_content,
   }));
 } 
